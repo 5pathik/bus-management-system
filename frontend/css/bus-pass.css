@@ -11,18 +11,20 @@
 
 /* ================= BODY ================= */
 body {
+  margin: 0;
   background: var(--bg);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ================= HEADER ================= */
 .erp-header {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  color: white;
+  color: #fff;
   padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 600;
 }
 
 /* ================= CONTAINER ================= */
@@ -31,6 +33,7 @@ body {
 }
 
 .center {
+  min-height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,14 +47,16 @@ body {
   width: 100%;
   max-width: 380px;
   text-align: center;
-  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
 }
 
 .bus-pass-card h2 {
   margin-bottom: 6px;
   color: var(--dark);
+  font-size: 22px;
 }
 
+/* ================= SUBTITLE ================= */
 .subtitle {
   font-size: 14px;
   color: var(--muted);
@@ -63,13 +68,24 @@ body {
   padding: 16px;
   background: #f8fafc;
   border-radius: 12px;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border: 2px dashed var(--primary);
+  margin-bottom: 16px;
 }
 
 .qr-box img {
   width: 200px;
   height: 200px;
+  object-fit: contain;
+}
+
+/* ================= PASS INFO ================= */
+.pass-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--dark);
 }
 
 /* ================= NOTE ================= */
@@ -86,7 +102,7 @@ body {
   }
 
   .qr-box img {
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
   }
 }

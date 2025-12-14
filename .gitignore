@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# Node / Frontend
+node_modules/
+
+# Uploads
+uploads/
+uploads/profiles/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+

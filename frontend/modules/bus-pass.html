@@ -24,16 +24,25 @@
 <!-- ===== CONTENT ===== -->
 <div class="container center">
 
-  <div class="bus-pass-card">
+  <div class="bus-pass-card" id="busPass">
 
     <h2>🎫 My Bus Pass</h2>
-    <p class="subtitle">Show this QR code to the driver while boarding</p>
+    <p class="subtitle">
+      Show this QR code to the driver while boarding
+    </p>
 
+    <!-- ===== QR CODE ===== -->
     <div class="qr-box">
       <img
-        src="http://127.0.0.1:5000/student/bus-pass/qr"
-        alt="Bus Pass QR Code">
+        id="qrImage"
+        src=""
+        alt="Bus Pass QR Code"
+        style="width:180px;height:180px;display:none;"
+      >
     </div>
+
+    <!-- ===== PASS DETAILS ===== -->
+    <div id="passInfo" class="pass-info"></div>
 
     <p class="note">
       This pass is valid only for the registered route and semester.
@@ -43,7 +52,7 @@
 
 </div>
 
-<!-- Page JS -->
+<!-- JS -->
 <script src="../js/bus-pass.js"></script>
 </body>
 </html>

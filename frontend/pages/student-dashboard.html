@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- COMMON + PAGE CSS -->
   <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/student.css">
 </head>
 <body>
@@ -13,7 +15,7 @@
 <!-- ===== ERP HEADER ===== -->
 <div class="erp-header">
   <div class="erp-left">
-    <img src="../assets/logo.png" class="logo">
+    <img src="../assets/logo.png" class="logo" alt="GEHU Logo">
     <span>Graphic Era Hill University</span>
   </div>
 
@@ -23,7 +25,7 @@
 
     <!-- USER MENU -->
     <div class="user-menu" onclick="toggleDropdown()">
-      <img src="../assets/user.png" class="avatar">
+      <img id="topProfileImage" src="../assets/user.png" class="avatar" alt="User">
       <span id="studentTopName">Student</span>
 
       <div class="dropdown" id="userDropdown">
@@ -42,33 +44,34 @@
 <!-- ===== MAIN LAYOUT ===== -->
 <div class="layout">
 
-  <!-- ===== LEFT PROFILE ===== -->
+  <!-- ===== PROFILE CARD ===== -->
   <div class="profile-card">
     <img
-  id="profileImage"
-  src="../assets/user.png"
-  class="profile-img"
->
+      id="profileImage"
+      src="../assets/user.png"
+      class="profile-img"
+      alt="Profile Photo"
+    >
 
-<input
-  type="file"
-  id="photoInput"
-  accept="image/*"
-  style="margin-top:10px"
->
+    <input
+      type="file"
+      id="photoInput"
+      accept="image/*"
+      style="margin-top:10px"
+    >
 
-<button onclick="uploadPhoto()">Upload Photo</button>
+    <button onclick="uploadPhoto()">Upload Photo</button>
 
     <h3 id="studentName">Student Name</h3>
     <p class="uid">University ID: <span id="studentUID">---</span></p>
 
     <div class="info">
-      <p><b>Email:</b> <span id="studentEmail"></span></p>
-      <p><b>D.O.B:</b> <span id="studentDOB"></span></p>
-      <p><b>Father:</b> <span id="studentFather"></span></p>
-      <p><b>Course:</b> <span id="studentCourse"></span></p>
-      <p><b>Semester:</b> <span id="studentSemester"></span></p>
-      <p><b>Campus:</b> <span id="studentCampus"></span></p>
+      <p><b>Email:</b> <span id="studentEmail">-</span></p>
+      <p><b>D.O.B:</b> <span id="studentDOB">-</span></p>
+      <p><b>Father:</b> <span id="studentFather">-</span></p>
+      <p><b>Course:</b> <span id="studentCourse">-</span></p>
+      <p><b>Semester:</b> <span id="studentSemester">-</span></p>
+      <p><b>Campus:</b> <span id="studentCampus">-</span></p>
     </div>
   </div>
 
@@ -77,10 +80,28 @@
 
     <!-- MODULES -->
     <div class="modules">
-      <div class="module" onclick="goToRoutes()">🚌<span>Bus Routes<br>(Live Tracking)</span></div>
-      <div class="module" onclick="goToBusPass()">🎫<span>Bus Pass<br>(Show QR)</span></div>
-      <div class="module">💺<span>Seat Status<br><span id="seatStatus">Loading...</span></span></div>
-      <div class="module" onclick="goToNotifications()">🔔<span>Bus Alerts<br>(Delay/Status)</span></div>
+      <div class="module" onclick="goToRoutes()">
+        🚌
+        <span>Bus Routes<br>(Live Tracking)</span>
+      </div>
+
+      <div class="module" onclick="goToBusPass()">
+        🎫
+        <span>Bus Pass<br>(Show QR)</span>
+      </div>
+
+      <div class="module">
+        💺
+        <span>
+          Seat Status<br>
+          <span id="seatStatus">Loading...</span>
+        </span>
+      </div>
+
+      <div class="module" onclick="goToNotifications()">
+        🔔
+        <span>Bus Alerts<br>(Delay / Status)</span>
+      </div>
     </div>
 
     <!-- NOTICE BOARD -->
@@ -93,12 +114,13 @@
 
     <!-- CAMPUS IMAGE -->
     <div class="campus-banner">
-      <img src="../assets/university.jpg">
+      <img src="../assets/university.jpg" alt="Campus">
     </div>
 
   </div>
 </div>
 
+<!-- PAGE SCRIPT -->
 <script src="../js/student-dashboard.js"></script>
 </body>
 </html>

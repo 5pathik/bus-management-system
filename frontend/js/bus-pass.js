@@ -1,53 +1,72 @@
 const API = "http://127.0.0.1:5000";
 
 /* ================= AUTH CHECK ================= */
-(function () {
+(function authCheck() {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
   if (!token || role !== "student") {
-    alert("Unauthorized access");
+    localStorage.clear();
     window.location.href = "../pages/index.html";
   }
 })();
 
-/* ================= AUTH HEADERS ================= */
-function authHeaders() {
-  return {
-    "Authorization": "Bearer " + localStorage.getItem("token")
-  };
-}
-
 /* ================= LOAD BUS PASS ================= */
 async function loadBusPass() {
+  const busPassEl = document.getElementById("busPass");
+  const passInfoEl = document.getElementById("passInfo");
+  const qrImg = document.getElementById("qrImage");
+
   try {
     const res = await fetch(`${API}/student/bus-pass`, {
-      headers: authHeaders()
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
     });
 
-    if (!res.ok) throw new Error("Bus pass not found");
+    // ❌ Session expired
+    if (res.status === 401) {
+      throw new Error("Session expired");
+    }
+
+    // ❌ No bus pass
+    if (!res.ok) {
+      throw new Error("No active bus pass");
+    }
 
     const data = await res.json();
+    console.log("✅ BUS PASS:", data);
 
-    document.getElementById("busPass").innerHTML = `
-      <h3>🎫 University Bus Pass</h3>
+    /* ===== PASS DETAILS ===== */
+    passInfoEl.innerHTML = `
       <p><strong>Name:</strong> ${data.name}</p>
       <p><strong>Route:</strong> ${data.route_name}</p>
       <p><strong>Valid Till:</strong> ${data.valid_till}</p>
-
-      <img 
-        src="${API}/student/bus-pass/qr" 
-        alt="Bus Pass QR"
-        style="width:180px;margin-top:15px;border:1px solid #ccc"
-      >
     `;
 
+    /* ===== QR IMAGE (IMPORTANT FIX) ===== */
+    qrImg.src = `${API}/student/bus-pass/qr`;
+    qrImg.alt = "Bus Pass QR Code";
+    qrImg.style.display = "block";
+
   } catch (err) {
-    console.error("❌ Bus pass error:", err);
-    document.getElementById("busPass").innerHTML =
-      "<p>No active bus pass found</p>";
+    console.error("❌ BUS PASS ERROR:", err);
+
+    busPassEl.innerHTML = `
+      <h3>🎫 No Active Bus Pass</h3>
+      <p>Please contact the transport office.</p>
+    `;
+
+    // Auto logout if session expired
+    if (err.message.includes("Session")) {
+      setTimeout(() => {
+        localStorage.clear();
+        window.location.href = "../pages/index.html";
+      }, 1500);
+    }
   }
 }
 
 /* ================= INIT ================= */
-loadBusPass();
+document.addEventListener("DOMContentLoaded", loadBusPass);

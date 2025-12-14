@@ -8,37 +8,58 @@ auth_bp = Blueprint("auth", __name__)
 @auth_bp.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
+
+    # 🔴 No JSON sent
+    if not data:
+        return jsonify({
+            "status": "fail",
+            "message": "No data received"
+        }), 400
+
     email = data.get("email")
     password = data.get("password")
 
-    print("🔐 LOGIN ATTEMPT")
-    print("Email:", email)
-    print("Password:", password)
+    # 🔴 Missing fields
+    if not email or not password:
+        return jsonify({
+            "status": "fail",
+            "message": "Email and password required"
+        }), 400
 
-    cursor = get_cursor()
-    cursor.execute("""
-        SELECT id, name, email, password, role
-        FROM users
-        WHERE email=%s
-    """, (email,))
+    # ✅ DB CONNECTION
+    cursor, db = get_cursor()
 
-    user = cursor.fetchone()
-    print("DB USER:", user)
+    try:
+        cursor.execute(
+            """
+            SELECT id, name, email, password, role
+            FROM users
+            WHERE email = %s
+            """,
+            (email,)
+        )
 
-    if not user:
-        return jsonify({"status": "fail", "message": "Invalid login"}), 401
+        user = cursor.fetchone()
 
-    if user["password"] != password:
-        print("❌ PASSWORD MISMATCH")
-        return jsonify({"status": "fail", "message": "Invalid login"}), 401
+    finally:
+        # ✅ ALWAYS close DB
+        cursor.close()
+        db.close()
 
+    # 🔴 Invalid credentials
+    if not user or user["password"] != password:
+        return jsonify({
+            "status": "fail",
+            "message": "Invalid credentials"
+        }), 401
+
+    # ✅ Generate JWT
     token = generate_token(user)
-
-    print("✅ LOGIN SUCCESS")
 
     return jsonify({
         "status": "success",
         "token": token,
         "role": user["role"],
-        "name": user["name"]
+        "name": user["name"],
+        "user_id": user["id"]
     })

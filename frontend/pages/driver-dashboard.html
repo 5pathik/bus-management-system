@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Common Styles -->
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/driver.css">
 
-  <!-- QR Scanner -->
+  <!-- QR Scanner Library -->
   <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
@@ -16,37 +17,48 @@
 <!-- ===== ERP HEADER ===== -->
 <div class="erp-header">
   <div class="erp-left">
-    <img src="../assets/logo.png" class="logo">
-    <span>Driver Panel</span>
+    <img src="../assets/logo.png" class="logo" alt="GEHU Logo">
+    <span>Graphic Era Hill University</span>
   </div>
 
   <div class="erp-right">
-    <span id="driverName">Driver</span>
+    <!-- USER MENU -->
+    <div class="user-menu" onclick="toggleDropdown()">
+      <img src="../assets/user.png" class="avatar" alt="Driver Avatar">
+      <span id="driverName">Driver</span>
+
+      <div class="dropdown" id="userDropdown">
+        <a href="#">👤 Driver Profile</a>
+        <a href="#" onclick="logout()">🚪 Logout</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- ===== MAIN LAYOUT ===== -->
 <div class="layout">
-
   <div class="dashboard">
 
     <h2>Today's Duty</h2>
 
-    <!-- DUTY INFO -->
+    <!-- ===== DUTY INFO ===== -->
     <div class="card duty-card">
       <p><b>Route:</b> <span id="route">Loading...</span></p>
       <p><b>Shift:</b> <span id="shift">Loading...</span></p>
       <p><b>Status:</b> <span id="status">Active</span></p>
     </div>
 
-    <!-- QR SCANNER -->
+    <!-- ===== QR SCANNER ===== -->
     <div class="card scan-card">
       <h3>📷 Scan Student Bus Pass</h3>
 
+      <!-- Camera Area -->
       <div id="qr-reader"></div>
 
+      <!-- Status -->
       <p id="scanStatus" class="scan-status">Camera idle</p>
 
+      <!-- Actions -->
       <div class="scan-actions">
         <button onclick="startScan()">Start Scan</button>
         <button class="danger" onclick="stopScan()">Stop</button>
@@ -56,6 +68,7 @@
   </div>
 </div>
 
+<!-- ===== JS ===== -->
 <script src="../js/driver.js"></script>
 </body>
 </html>

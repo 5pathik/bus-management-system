@@ -1,11 +1,17 @@
 import mysql.connector
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="bus_management"
-)
+# ================= DATABASE CONNECTION =================
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="bus_management",
+        autocommit=True   # 🔥 VERY IMPORTANT
+    )
 
+# ================= GET CURSOR =================
 def get_cursor():
-    return db.cursor(dictionary=True)
+    db = get_db_connection()
+    cursor = db.cursor(dictionary=True)
+    return cursor, db

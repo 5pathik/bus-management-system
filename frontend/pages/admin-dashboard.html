@@ -4,46 +4,69 @@
   <title>Admin Dashboard</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Common Styles -->
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 
+<!-- ===== ERP HEADER ===== -->
 <div class="erp-header">
   <div class="erp-left">
-    <img src="../assets/logo.png" class="logo">
-    <span>Admin Panel</span>
+    <img src="../assets/logo.png" class="logo" alt="GEHU Logo">
+    <span>Graphic Era Hill University</span>
   </div>
+
   <div class="erp-right">
-    <span id="adminName">Admin</span>
-  </div>
-</div>
+    <!-- USER MENU -->
+    <div class="user-menu" onclick="toggleDropdown()">
+      <img src="../assets/user.png" class="avatar" alt="Admin Avatar">
+      <span id="adminName">Admin</span>
 
-<div class="layout">
-  <div class="dashboard">
-    <h2>System Overview</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Total Students</h3>
-        <p id="students">0</p>
-      </div>
-      <div class="card">
-        <h3>Total Drivers</h3>
-        <p id="drivers">0</p>
-      </div>
-      <div class="card">
-        <h3>Total Routes</h3>
-        <p id="routes">0</p>
-      </div>
-      <div class="card">
-        <h3>Total Buses</h3>
-        <p id="buses">0</p>
+      <div class="dropdown" id="userDropdown">
+        <a href="#">👤 Admin Profile</a>
+        <a href="#" onclick="logout()">🚪 Logout</a>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="layout">
+  <div class="dashboard">
+
+    <h2>System Overview</h2>
+    <p class="muted">University Bus Management System</p>
+
+    <!-- ===== STATS GRID ===== -->
+    <div class="grid">
+
+      <div class="card">
+        <h3>Total Students</h3>
+        <p id="students">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Drivers</h3>
+        <p id="drivers">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Routes</h3>
+        <p id="routes">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Buses</h3>
+        <p id="buses">0</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== JS ===== -->
 <script src="../js/admin.js"></script>
 </body>
 </html>

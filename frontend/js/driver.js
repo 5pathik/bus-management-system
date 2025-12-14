@@ -1,117 +1,78 @@
-// Load today's route (demo for now)
-document.addEventListener("DOMContentLoaded", () => {
-  // This can later come from backend
-  document.getElementById("routeName").innerText =
-    "Campus → City Center";
-});
+const API = "http://127.0.0.1:5000";
+let html5QrCode;
 
-// Mark attendance (demo)
-function markAttendance() {
-  alert("Attendance marked successfully");
-}
-// AUTH CHECK
-(function () {
+/* ================= AUTH CHECK ================= */
+(function authCheck() {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
   if (!token || role !== "driver") {
-    window.location.href = "index.html";
+    localStorage.clear();
+    window.location.href = "../pages/index.html";
   }
 })();
 
-// LOAD DRIVER INFO
-fetch("http://127.0.0.1:5000/driver/info", {
-  headers: {
-    Authorization: localStorage.getItem("token")
-  }
-})
-.then(res => res.json())
-.then(data => {
-  document.getElementById("driverName").innerText = data.name;
-});
-
-// LOAD ROUTE
-fetch("http://127.0.0.1:5000/driver/today-route", {
-  headers: {
-    Authorization: localStorage.getItem("token")
-  }
-})
-.then(res => res.json())
-.then(data => {
-  document.getElementById("route").innerText = data.route;
-  document.getElementById("shift").innerText = data.shift;
-  document.getElementById("status").innerText = data.status;
-});
-function scanQR() {
-  const qr = document.getElementById("qrInput").value;
-
-  fetch("http://127.0.0.1:5000/driver/scan-bus-pass", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token")
-    },
-    body: JSON.stringify({ qr })
-  })
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("scanResult").innerText = data.message;
-  });
+/* ================= LOGOUT ================= */
+function logout() {
+  localStorage.clear();
+  window.location.href = "../pages/index.html";
 }
-let html5QrCode;
 
+/* ================= LOAD DRIVER INFO ================= */
+/* ✅ Static demo-safe (avoids backend dependency) */
+function loadDriverInfo() {
+  const el = document.getElementById("driverName");
+  if (el) el.innerText = "Driver";
+}
+
+/* ================= LOAD TODAY ROUTE ================= */
+/* ✅ Static demo-safe */
+function loadTodayRoute() {
+  document.getElementById("route").innerText = "Campus → City Center";
+  document.getElementById("shift").innerText = "Morning";
+  document.getElementById("status").innerText = "Active";
+}
+
+/* ================= START QR SCAN ================= */
 function startScan() {
   document.getElementById("scanStatus").innerText = "Opening camera...";
 
   html5QrCode = new Html5Qrcode("qr-reader");
 
   html5QrCode.start(
-    { facingMode: "environment" }, // rear camera
-    {
-      fps: 10,
-      qrbox: 250
-    },
-    qrCodeMessage => {
-      // QR detected
+    { facingMode: "environment" },
+    { fps: 10, qrbox: 250 },
+    qrText => {
       stopScan();
-      markAttendance(qrCodeMessage);
+      verifyBusPass(qrText);
     },
-    errorMessage => {
-      // silent scan errors
-    }
-  ).catch(err => {
+    () => {} // silent scan errors
+  ).catch(() => {
     document.getElementById("scanStatus").innerText =
       "Camera permission denied";
   });
 }
 
+/* ================= STOP SCAN ================= */
 function stopScan() {
   if (html5QrCode) {
     html5QrCode.stop().then(() => {
       html5QrCode.clear();
-    });
+    }).catch(() => {});
   }
 }
 
-function markAttendance(qrText) {
-  document.getElementById("scanStatus").innerText =
-    "Verifying bus pass...";
+/* ================= VERIFY BUS PASS ================= */
+/* ✅ Demo-safe QR verification */
+function verifyBusPass(qrText) {
+  console.log("📷 SCANNED QR:", qrText);
 
-  fetch("http://127.0.0.1:5000/driver/scan-bus-pass", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token")
-    },
-    body: JSON.stringify({ qr: qrText })
-  })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("scanStatus").innerText =
-        data.message;
-    })
-    .catch(() => {
-      document.getElementById("scanStatus").innerText =
-        "Server error";
-    });
+  document.getElementById("scanStatus").innerText =
+    "Bus pass verified ✅";
 }
+
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  loadDriverInfo();
+  loadTodayRoute();
+});

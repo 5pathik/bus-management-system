@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Driver Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/driver.css">
+
+  <!-- QR Scanner -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+
+<!-- ===== ERP HEADER ===== -->
+<div class="erp-header">
+  <div class="erp-left">
+    <img src="../assets/logo.png" class="logo">
+    <span>Driver Panel</span>
+  </div>
+
+  <div class="erp-right">
+    <span id="driverName">Driver</span>
+  </div>
+</div>
+
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="layout">
+
+  <div class="dashboard">
+
+    <h2>Today's Duty</h2>
+
+    <!-- DUTY INFO -->
+    <div class="card duty-card">
+      <p><b>Route:</b> <span id="route">Loading...</span></p>
+      <p><b>Shift:</b> <span id="shift">Loading...</span></p>
+      <p><b>Status:</b> <span id="status">Active</span></p>
+    </div>
+
+    <!-- QR SCANNER -->
+    <div class="card scan-card">
+      <h3>📷 Scan Student Bus Pass</h3>
+
+      <div id="qr-reader"></div>
+
+      <p id="scanStatus" class="scan-status">Camera idle</p>
+
+      <div class="scan-actions">
+        <button onclick="startScan()">Start Scan</button>
+        <button class="danger" onclick="stopScan()">Stop</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="../js/driver.js"></script>
+</body>
+</html>

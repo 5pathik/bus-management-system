@@ -1,22 +1,169 @@
-/* ================= NOTIFICATIONS ================= */
-
-.notification-card {
-  width: 100%;
+/* ================= ROOT ================= */
+:root {
+  --primary: #0ea5e9;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --dark: #0f172a;
+  --muted: #64748b;
+  --radius: 12px;
 }
 
-.notification-card p {
-  font-size: 16px;
-  color: #1e293b;
+/* ================= BODY ================= */
+body {
+  background: var(--bg);
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-/* Subtle highlight */
-.notification-card {
-  border-left: 5px solid #2563eb;
+/* ================= HEADER ================= */
+.erp-header {
+  background: linear-gradient(90deg, var(--primary), #0284c7);
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px;
+}
+
+.container h2 {
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+/* ================= GRID ================= */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ================= NOTIFICATION CARD ================= */
+.card {
+  background: var(--card);
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-left: 6px solid var(--primary);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+/* ================= TYPES ================= */
+.card.warning { border-left-color: var(--warning); }
+.card.danger { border-left-color: var(--danger); }
+.card.success { border-left-color: var(--success); }
+
+/* ================= TEXT ================= */
+.card h4 {
+  font-size: 15px;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ================= TIME ================= */
+.time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+/* ================= EMPTY ================= */
+.empty {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 40px 0;
 }
 
 /* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .notification-card {
-    text-align: center;
+@media (max-width: 600px) {
+  .container {
+    padding: 14px;
   }
+}
+/* ===== ALERT / NOTIFICATION CARD ===== */
+.alert-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  border-left: 6px solid;
+  transition: transform 0.2s ease;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Header */
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.alert-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Message */
+.alert-message {
+  font-size: 14px;
+  color: #374151;
+  margin: 6px 0 10px;
+}
+
+/* Footer */
+.alert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Badge */
+.badge {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* ===== WARNING TYPE ===== */
+.alert-card.warning {
+  border-color: #f59e0b;
+}
+
+.alert-card.warning .alert-icon {
+  font-size: 20px;
 }

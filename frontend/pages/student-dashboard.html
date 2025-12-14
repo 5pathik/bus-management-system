@@ -44,7 +44,20 @@
 
   <!-- ===== LEFT PROFILE ===== -->
   <div class="profile-card">
-    <img src="../assets/user.png" class="profile-img">
+    <img
+  id="profileImage"
+  src="../assets/user.png"
+  class="profile-img"
+>
+
+<input
+  type="file"
+  id="photoInput"
+  accept="image/*"
+  style="margin-top:10px"
+>
+
+<button onclick="uploadPhoto()">Upload Photo</button>
 
     <h3 id="studentName">Student Name</h3>
     <p class="uid">University ID: <span id="studentUID">---</span></p>

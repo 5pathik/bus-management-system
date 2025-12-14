@@ -1,18 +1,17 @@
-// Demo notifications (later replace with backend fetch)
-const notifications = [
-  "🚌 Bus delayed by 10 minutes",
-  "📍 Route changed due to traffic",
-  "🕒 Morning bus timing updated"
-];
-
-const container = document.getElementById("notifications");
-
-container.innerHTML = "";
-
-notifications.forEach(note => {
-  container.innerHTML += `
-    <div class="card notification-card">
-      <p>${note}</p>
+output += `
+  <div class="alert-card warning">
+    <div class="alert-header">
+      <span class="alert-icon">🚌</span>
+      <h4>Bus Delayed</h4>
     </div>
-  `;
-});
+
+    <p class="alert-message">
+      Morning bus delayed by <b>10 minutes</b>.
+    </p>
+
+    <div class="alert-footer">
+      <span>⏰ Today · 8:10 AM</span>
+      <span class="badge">Important</span>
+    </div>
+  </div>
+`;

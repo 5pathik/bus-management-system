@@ -1,29 +1,23 @@
 let code = "";
 
-// ================= SECURITY CODE =================
+/* ===== SECURITY CODE ===== */
 function generateCode() {
   code = Math.random().toString(36).substring(2, 8).toUpperCase();
-  const codeEl = document.getElementById("securityCode");
-  if (codeEl) {
-    codeEl.innerText = code;
-  }
+  document.getElementById("securityCode").innerText = code;
 }
-
 window.onload = generateCode;
 
-// ================= LOGIN FUNCTION =================
+/* ===== LOGIN ===== */
 function login() {
   const email = document.getElementById("userId").value.trim();
   const password = document.getElementById("password").value.trim();
   const securityInput = document.getElementById("securityInput").value.trim();
 
-  // Basic validation
   if (!email || !password || !securityInput) {
     alert("Please fill all fields");
     return;
   }
 
-  // Security code validation
   if (securityInput !== code) {
     alert("Security code incorrect");
     generateCode();
@@ -32,41 +26,36 @@ function login() {
 
   fetch("http://127.0.0.1:5000/login", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
   })
-    .then(res => res.json())
-    .then(data => {
+  .then(res => res.json())
+  .then(data => {
 
-      if (data.status === "success" && data.token && data.user) {
+    console.log("LOGIN RESPONSE:", data);
 
-        // ================= STORE JWT PROPERLY =================
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.user.role);
-        localStorage.setItem("userId", data.user.id);
+    if (data.status === "success") {
 
-        // ================= ROLE-BASED REDIRECT =================
-        if (data.user.role === "student") {
-          window.location.href = "student-dashboard.html";
-        }
-        else if (data.user.role === "driver") {
-          window.location.href = "driver-dashboard.html";
-        }
-        else if (data.user.role === "admin") {
-          window.location.href = "admin-dashboard.html";
-        }
-        else {
-          alert("Unknown user role");
-        }
+      // ✅ STORE TOKEN CORRECTLY
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+      localStorage.setItem("userName", data.name);
 
-      } else {
-        alert("Invalid login credentials");
-        generateCode();
+      // ✅ REDIRECT
+      if (data.role === "student") {
+        window.location.href = "student-dashboard.html";
+      } else if (data.role === "driver") {
+        window.location.href = "driver-dashboard.html";
+      } else if (data.role === "admin") {
+        window.location.href = "admin-dashboard.html";
       }
-    })
-    .catch(() => {
-      alert("Unable to connect to server");
-    });
+
+    } else {
+      alert("Invalid login credentials");
+      generateCode();
+    }
+  })
+  .catch(() => {
+    alert("Unable to connect to server");
+  });
 }

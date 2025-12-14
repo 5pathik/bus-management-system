@@ -11,19 +11,39 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    Bus Pass
+<!-- ===== HEADER ===== -->
+<div class="erp-header">
+  <div class="erp-left">
+    <span>Student Panel</span>
   </div>
+  <div class="erp-right">
+    <span>Bus Pass</span>
+  </div>
+</div>
 
-  <!-- Content -->
-  <div class="container center">
-    <div class="card bus-pass-card" id="busPass">
-      Loading bus pass...
+<!-- ===== CONTENT ===== -->
+<div class="container center">
+
+  <div class="bus-pass-card">
+
+    <h2>🎫 My Bus Pass</h2>
+    <p class="subtitle">Show this QR code to the driver while boarding</p>
+
+    <div class="qr-box">
+      <img
+        src="http://127.0.0.1:5000/student/bus-pass/qr"
+        alt="Bus Pass QR Code">
     </div>
+
+    <p class="note">
+      This pass is valid only for the registered route and semester.
+    </p>
+
   </div>
 
-  <!-- Page JS -->
-  <script src="../js/bus-pass.js"></script>
+</div>
+
+<!-- Page JS -->
+<script src="../js/bus-pass.js"></script>
 </body>
 </html>

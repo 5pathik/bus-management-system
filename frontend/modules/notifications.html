@@ -11,19 +11,29 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    Notifications
+<!-- ===== HEADER ===== -->
+<div class="erp-header">
+  <div class="erp-left">
+    <span>Student Panel</span>
+  </div>
+  <div class="erp-right">
+    <span>Notifications</span>
+  </div>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<div class="container">
+
+  <h2>Bus Notifications</h2>
+  <p class="subtitle">Important updates regarding routes, delays and schedules</p>
+
+  <div id="notifications" class="grid">
+    Loading notifications...
   </div>
 
-  <!-- Content -->
-  <div class="container">
-    <div id="notifications" class="grid">
-      Loading notifications...
-    </div>
-  </div>
+</div>
 
-  <!-- Page JS -->
-  <script src="../js/notifications.js"></script>
+<!-- Page JS -->
+<script src="../js/notifications.js"></script>
 </body>
 </html>

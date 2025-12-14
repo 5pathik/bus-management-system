@@ -1,20 +1,24 @@
-# backend/app.py
-from flask import Flask
+# app.py
+from flask import Flask, send_from_directory
 from flask_cors import CORS
-
-from auth import register_auth_routes
-from student_routes import student_bp
-from admin_routes import admin_bp
-from driver_routes import driver_bp
 
 app = Flask(__name__)
 CORS(app)
 
-# Register routes
-register_auth_routes(app)
+from auth import auth_bp
+from student_routes import student_bp
+from admin_routes import admin_bp
+from driver_routes import driver_bp
+
+app.register_blueprint(auth_bp)
 app.register_blueprint(student_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(driver_bp)
+
+# 🔹 Serve profile images
+@app.route("/uploads/profiles/<filename>")
+def profile_image(filename):
+    return send_from_directory("uploads/profiles", filename)
 
 @app.route("/")
 def home():

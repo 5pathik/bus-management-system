@@ -1,29 +1,92 @@
-/* ================= BUS PASS ================= */
+/* ================= ROOT ================= */
+:root {
+  --primary: #0ea5e9;
+  --secondary: #0284c7;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --dark: #0f172a;
+  --muted: #64748b;
+  --radius: 14px;
+}
 
+/* ================= BODY ================= */
+body {
+  background: var(--bg);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+.erp-header {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  padding: 24px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= BUS PASS CARD ================= */
 .bus-pass-card {
-  max-width: 420px;
-  text-align: center;
-}
-
-.bus-pass-card h3 {
-  color: #1e293b;
-  margin-bottom: 15px;
-}
-
-.bus-pass-card p {
-  font-size: 15px;
-  margin: 6px 0;
-}
-
-.bus-pass-card button {
-  margin-top: 15px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 26px;
   width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+}
+
+.bus-pass-card h2 {
+  margin-bottom: 6px;
+  color: var(--dark);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+/* ================= QR BOX ================= */
+.qr-box {
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  display: inline-block;
+  border: 2px dashed var(--primary);
+}
+
+.qr-box img {
+  width: 200px;
+  height: 200px;
+}
+
+/* ================= NOTE ================= */
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 16px;
 }
 
 /* ================= MOBILE ================= */
-@media (max-width: 768px) {
-
+@media (max-width: 480px) {
   .bus-pass-card {
-    margin: 0 15px;
+    padding: 22px;
+  }
+
+  .qr-box img {
+    width: 180px;
+    height: 180px;
   }
 }

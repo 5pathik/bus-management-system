@@ -11,19 +11,29 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    Bus Routes
+<!-- ===== HEADER ===== -->
+<div class="erp-header">
+  <div class="erp-left">
+    <span>Student Panel</span>
+  </div>
+  <div class="erp-right">
+    <span>Bus Routes</span>
+  </div>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<div class="container">
+
+  <h2>Available Bus Routes</h2>
+  <p class="subtitle">Live route information for university buses</p>
+
+  <div id="routes" class="grid">
+    Loading routes...
   </div>
 
-  <!-- Content -->
-  <div class="container">
-    <div id="routes" class="grid">
-      Loading routes...
-    </div>
-  </div>
+</div>
 
-  <!-- Page JS -->
-  <script src="../js/routes.js"></script>
+<!-- Page JS -->
+<script src="../js/routes.js"></script>
 </body>
 </html>

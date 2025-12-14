@@ -1,46 +1,131 @@
-/* ================= DRIVER DASHBOARD ================= */
-
-.container {
-  margin-top: 20px;
+/* ================= ROOT ================= */
+:root {
+  --primary: #0ea5e9;
+  --secondary: #0284c7;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --dark: #0f172a;
+  --radius: 12px;
 }
 
-/* Card hover effect */
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* ================= BODY ================= */
+body {
+  background: var(--bg);
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+/* ================= HEADER ================= */
+.erp-header {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Card titles */
-.card h3 {
-  color: #1e293b;
-  font-size: 18px;
-  margin-bottom: 8px;
+.erp-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
 }
 
-/* Route text */
-.card p {
-  font-size: 16px;
-  color: #475569;
+.logo {
+  height: 36px;
 }
 
-/* Button */
-.card button {
-  margin-top: 12px;
+/* ================= LAYOUT ================= */
+.layout {
+  padding: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard {
   width: 100%;
+  max-width: 600px;
+}
+
+.dashboard h2 {
+  margin-bottom: 14px;
+  color: var(--dark);
+}
+
+/* ================= CARDS ================= */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+/* ================= DUTY CARD ================= */
+.duty-card p {
   font-size: 15px;
+  margin-bottom: 6px;
+}
+
+/* ================= SCAN CARD ================= */
+.scan-card {
+  text-align: center;
+}
+
+#qr-reader {
+  margin: 12px auto;
+  max-width: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+}
+
+.scan-status {
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+/* ================= BUTTONS ================= */
+.scan-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(14,165,233,0.4);
+}
+
+button.danger {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
 }
 
 /* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .container {
-    padding: 20px;
+@media (max-width: 600px) {
+  .layout {
+    padding: 14px;
   }
 
-  .card {
-    text-align: center;
+  .dashboard {
+    max-width: 100%;
   }
 }

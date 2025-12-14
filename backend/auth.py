@@ -1,34 +1,44 @@
-# backend/auth.py
-from flask import request, jsonify
+from flask import Blueprint, request, jsonify
 from db import get_cursor
 from auth_utils import generate_token
 
-def register_auth_routes(app):
+auth_bp = Blueprint("auth", __name__)
 
-    @app.route("/login", methods=["POST"])
-    def login():
-        data = request.json
-        email = data.get("email")
-        password = data.get("password")
+# ================= LOGIN =================
+@auth_bp.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")
 
-        cursor = get_cursor()
-        cursor.execute(
-            "SELECT id, name, role FROM users WHERE email=%s AND password=%s",
-            (email, password)
-        )
-        user = cursor.fetchone()
+    print("🔐 LOGIN ATTEMPT")
+    print("Email:", email)
+    print("Password:", password)
 
-        if not user:
-            return jsonify({"message": "Invalid credentials"}), 401
+    cursor = get_cursor()
+    cursor.execute("""
+        SELECT id, name, email, password, role
+        FROM users
+        WHERE email=%s
+    """, (email,))
 
-        token = generate_token(
-            user_id=user["id"],
-            role=user["role"],
-            name=user["name"]
-        )
+    user = cursor.fetchone()
+    print("DB USER:", user)
 
-        return jsonify({
-            "status": "success",
-            "token": token,
-            "user": user
-        })
+    if not user:
+        return jsonify({"status": "fail", "message": "Invalid login"}), 401
+
+    if user["password"] != password:
+        print("❌ PASSWORD MISMATCH")
+        return jsonify({"status": "fail", "message": "Invalid login"}), 401
+
+    token = generate_token(user)
+
+    print("✅ LOGIN SUCCESS")
+
+    return jsonify({
+        "status": "success",
+        "token": token,
+        "role": user["role"],
+        "name": user["name"]
+    })

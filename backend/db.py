@@ -1,8 +1,9 @@
-# ================== DATABASE ==================
 import mysql.connector
-from config import MYSQL_CONFIG
 
-db = mysql.connector.connect(**MYSQL_CONFIG)
-
-def get_cursor():
-    return db.cursor(dictionary=True)
+def get_db():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",   # your MySQL password
+        database="bus_management"
+    )

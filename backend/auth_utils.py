@@ -1,45 +1,33 @@
-# ================== AUTH UTILITIES ==================
 import jwt
 from functools import wraps
 from flask import request, jsonify
-from config import JWT_SECRET
-from datetime import datetime, timedelta
 
+SECRET_KEY = "bus_secret_key_123"
 
-# ---------- CREATE TOKEN ----------
 def generate_token(user):
     payload = {
         "id": user["id"],
-        "role": user["role"],
-        "exp": datetime.utcnow() + timedelta(minutes=60)
+        "role": user["role"]
     }
-    return jwt.encode(payload, JWT_SECRET, algorithm="HS256")
+    return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
-
-# ---------- VERIFY TOKEN ----------
-def token_required(required_roles=None):
+def token_required(role=None):
     def decorator(f):
         @wraps(f)
         def wrapper(*args, **kwargs):
             token = request.headers.get("Authorization")
-
             if not token:
                 return jsonify({"message": "Token missing"}), 401
 
             try:
-                token = token.replace("Bearer ", "")
-                data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
-            except jwt.ExpiredSignatureError:
-                return jsonify({"message": "Token expired"}), 401
-            except Exception:
+                token = token.split(" ")[1]
+                data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+            except:
                 return jsonify({"message": "Invalid token"}), 401
 
-            # Role check
-            if required_roles and data["role"] not in required_roles:
+            if role and data["role"] != role:
                 return jsonify({"message": "Access denied"}), 403
 
-            request.user = data
-            return f(*args, **kwargs)
-
+            return f(data, *args, **kwargs)
         return wrapper
     return decorator

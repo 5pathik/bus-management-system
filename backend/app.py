@@ -14,9 +14,12 @@ register_admin_routes(app)
 register_student_routes(app)
 register_driver_routes(app)
 
-@app.route("/")
-def home():
-    return jsonify({"status": "running"})
+from flask import Flask
+from student_routes import student_bp
+
+app = Flask(__name__)
+
+app.register_blueprint(student_bp)
 
 if __name__ == "__main__":
     app.run(debug=True)

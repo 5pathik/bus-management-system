@@ -1,0 +1,22 @@
+/* ================= NOTIFICATIONS ================= */
+
+.notification-card {
+  width: 100%;
+}
+
+.notification-card p {
+  font-size: 16px;
+  color: #1e293b;
+}
+
+/* Subtle highlight */
+.notification-card {
+  border-left: 5px solid #2563eb;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .notification-card {
+    text-align: center;
+  }
+}

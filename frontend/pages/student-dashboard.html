@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Student Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+<body>
+
+<!-- ===== ERP HEADER ===== -->
+<div class="erp-header">
+  <div class="erp-left">
+    <img src="../assets/logo.png" class="logo">
+    <span>Graphic Era Hill University</span>
+  </div>
+
+  <div class="erp-right">
+    <button class="icon-btn" onclick="history.back()">⬅</button>
+    <button class="icon-btn" onclick="goHome()">🏠</button>
+
+    <!-- USER MENU -->
+    <div class="user-menu" onclick="toggleDropdown()">
+      <img src="../assets/user.png" class="avatar">
+      <span id="studentTopName">Student</span>
+
+      <div class="dropdown" id="userDropdown">
+        <a href="#">👤 My Profile</a>
+        <a href="#" onclick="logout()">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ANNOUNCEMENT ===== -->
+<div class="announcement" id="announcementText">
+  Loading announcements...
+</div>
+
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="layout">
+
+  <!-- ===== LEFT PROFILE ===== -->
+  <div class="profile-card">
+    <img src="../assets/user.png" class="profile-img">
+
+    <h3 id="studentName">Student Name</h3>
+    <p class="uid">University ID: <span id="studentUID">---</span></p>
+
+    <div class="info">
+      <p><b>Email:</b> <span id="studentEmail"></span></p>
+      <p><b>D.O.B:</b> <span id="studentDOB"></span></p>
+      <p><b>Father:</b> <span id="studentFather"></span></p>
+      <p><b>Course:</b> <span id="studentCourse"></span></p>
+      <p><b>Semester:</b> <span id="studentSemester"></span></p>
+      <p><b>Campus:</b> <span id="studentCampus"></span></p>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD ===== -->
+  <div class="dashboard">
+
+    <!-- MODULES -->
+    <div class="modules">
+      <div class="module" onclick="goToRoutes()">🚌<span>Bus Routes<br>(Live Tracking)</span></div>
+      <div class="module" onclick="goToBusPass()">🎫<span>Bus Pass<br>(Show QR)</span></div>
+      <div class="module">💺<span>Seat Status<br><span id="seatStatus">Loading...</span></span></div>
+      <div class="module" onclick="goToNotifications()">🔔<span>Bus Alerts<br>(Delay/Status)</span></div>
+    </div>
+
+    <!-- NOTICE BOARD -->
+    <div class="notice-board">
+      <h4>Important Updates</h4>
+      <ul id="busAlerts">
+        <li>Loading alerts...</li>
+      </ul>
+    </div>
+
+    <!-- CAMPUS IMAGE -->
+    <div class="campus-banner">
+      <img src="../assets/university.jpg">
+    </div>
+
+  </div>
+</div>
+
+<script src="../js/student-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Students by Route</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Common + Page CSS -->
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/students-by-route.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    Students by Route
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+
+    <!-- Filter Card -->
+    <div class="card filter-card">
+      <label>Select Route</label>
+      <select id="route"></select>
+
+      <label>Select Date</label>
+      <input type="date" id="date">
+
+      <div class="filter-actions">
+        <button onclick="loadData()">Apply Filter</button>
+        <button onclick="exportCSV()">Export CSV</button>
+      </div>
+    </div>
+
+    <!-- Result List -->
+    <div id="list" class="grid">
+      Loading data...
+    </div>
+
+  </div>
+
+  <!-- Page JS -->
+  <script src="../js/students-by-route.js"></script>
+</body>
+</html>

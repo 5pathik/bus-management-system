@@ -1,0 +1,46 @@
+/* ================= DRIVER DASHBOARD ================= */
+
+.container {
+  margin-top: 20px;
+}
+
+/* Card hover effect */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card titles */
+.card h3 {
+  color: #1e293b;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* Route text */
+.card p {
+  font-size: 16px;
+  color: #475569;
+}
+
+/* Button */
+.card button {
+  margin-top: 12px;
+  width: 100%;
+  font-size: 15px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .card {
+    text-align: center;
+  }
+}

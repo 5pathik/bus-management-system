@@ -1,0 +1,29 @@
+/* ================= BUS PASS ================= */
+
+.bus-pass-card {
+  max-width: 420px;
+  text-align: center;
+}
+
+.bus-pass-card h3 {
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+.bus-pass-card p {
+  font-size: 15px;
+  margin: 6px 0;
+}
+
+.bus-pass-card button {
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .bus-pass-card {
+    margin: 0 15px;
+  }
+}

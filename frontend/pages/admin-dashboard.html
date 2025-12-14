@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Common + Page CSS -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        Admin Dashboard
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Stats Grid -->
+        <div class="grid stats-grid">
+            <div class="card">
+                <h3>Total Buses</h3>
+                <p id="totalBuses">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Routes</h3>
+                <p id="totalRoutes">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Drivers</h3>
+                <p id="totalDrivers">--</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Students</h3>
+                <p id="totalStudents">--</p>
+            </div>
+        </div>
+
+        <!-- Actions Grid -->
+        <div class="grid action-grid">
+            <div class="card">
+                <h3>Attendance Report</h3>
+                <button onclick="openAttendanceReport()">View Report</button>
+            </div>
+
+            <div class="card">
+                <h3>Students by Route</h3>
+                <button onclick="openStudentsByRoute()">View Students</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page JS -->
+    <script src="../js/admin.js"></script>
+</body>
+</html>

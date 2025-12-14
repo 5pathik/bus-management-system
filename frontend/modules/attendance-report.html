@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Attendance Report</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Common + Page CSS -->
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/attendance.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    Admin – Attendance Report
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+
+    <!-- Cards -->
+    <div id="report" class="grid">
+      Loading report...
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <canvas id="attendanceChart"></canvas>
+    </div>
+
+  </div>
+
+  <!-- Page JS -->
+  <script src="../js/attendance.js"></script>
+</body>
+</html>

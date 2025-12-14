@@ -1,0 +1,13 @@
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 260px;
+  text-align: center;
+}
+
+.profile-card img {
+  width: 90px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}

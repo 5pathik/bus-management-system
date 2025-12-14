@@ -1,0 +1,118 @@
+/* ================= LOGIN PAGE ================= */
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 28px 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* Heading */
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #1e3c72;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.login-box input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.login-box input:focus {
+  border-color: #1e3c72;
+  outline: none;
+}
+
+/* Security Code Box */
+.security-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f2f4f8;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.security-box span {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.security-box button {
+  background: #1e3c72;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.security-box button:hover {
+  background: #16315c;
+}
+
+/* Login Button */
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #1e3c72;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: #16315c;
+}
+
+/* Links */
+.links {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.links a {
+  color: #1e3c72;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 480px) {
+  .login-box {
+    margin: 40px 15px;
+    padding: 22px 18px;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+  }
+
+  .security-box span {
+    font-size: 14px;
+  }
+}

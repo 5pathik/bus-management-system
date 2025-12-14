@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Driver Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Common + Page CSS -->
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/driver.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    Driver Dashboard
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="grid">
+
+      <div class="card">
+        <h3>Today's Route</h3>
+        <p id="routeName">Loading...</p>
+      </div>
+
+      <div class="card">
+        <h3>Mark Attendance</h3>
+        <button onclick="markAttendance()">Mark Present</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Page JS -->
+  <script src="../js/driver.js"></script>
+</body>
+</html>

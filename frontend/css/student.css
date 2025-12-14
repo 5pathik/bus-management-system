@@ -1,0 +1,235 @@
+/* ===== ERP HEADER ===== */
+.erp-header {
+  background: linear-gradient(90deg, #1565c0, #1e88e5);
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.erp-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.logo {
+  height: 35px;
+}
+
+.erp-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* ===== ANNOUNCEMENT ===== */
+.announcement {
+  background: #0284c7;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+}
+
+.dashboard {
+  flex: 1;
+}
+
+.muted {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .profile-card {
+    width: 100%;
+  }
+}
+.erp-header {
+  background: linear-gradient(90deg,#0ea5e9,#0284c7);
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.erp-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.logo { height: 35px; }
+
+.erp-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.avatar {
+  height: 35px;
+  border-radius: 50%;
+}
+
+.announcement {
+  background: #0284c7;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.profile-card {
+  width: 280px;
+  background: #0ea5e9;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.profile-img {
+  width: 90px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.uid {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.info p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+.logout-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 8px;
+  background: #ef4444;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modules {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(#0ea5e9,#0284c7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.module {
+  flex: 1;
+  background: rgba(255,255,255,0.15);
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.module span {
+  display: block;
+  margin-top: 6px;
+}
+
+.notice-board {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.campus-banner img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .layout { flex-direction: column; }
+  .profile-card { width: 100%; }
+  .modules { flex-direction: column; }
+}
+
+/* ===== USER DROPDOWN ===== */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  color: #1e293b;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  width: 180px;
+  display: none;
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.dropdown a:hover {
+  background: #f1f5f9;
+}
+
+.dropdown.show {
+  display: block;
+}

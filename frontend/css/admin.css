@@ -1,0 +1,47 @@
+/* ================= ADMIN DASHBOARD ================= */
+
+.container {
+  margin-top: 20px;
+}
+
+/* Stats grid spacing */
+.stats-grid {
+  margin-bottom: 30px;
+}
+
+/* Card hover */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Numbers inside cards */
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2563eb;
+  margin-top: 8px;
+}
+
+/* Action cards */
+.action-grid .card button {
+  margin-top: 12px;
+  width: 100%;
+  font-size: 15px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .container {
+    padding: 20px;
+  }
+
+  .card {
+    text-align: center;
+  }
+}

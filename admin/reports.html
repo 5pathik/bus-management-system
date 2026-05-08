@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reports</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a class="active-link" href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="admin-topbar">
+      <div>
+        <h1>Reports Dashboard</h1>
+        <p>Track transport operations, pass validity, and attendance performance.</p>
+      </div>
+      <div class="admin-date" id="currentDate"></div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <h2 id="totalStudents">0</h2>
+        <p>Total Students</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🧑‍✈️</div>
+        <h2 id="totalConductors">0</h2>
+        <p>Total Conductors</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🚌</div>
+        <h2 id="totalBuses">0</h2>
+        <p>Total Buses</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🎫</div>
+        <h2 id="validPasses">0</h2>
+        <p>Valid Passes</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">⛔</div>
+        <h2 id="expiredPasses">0</h2>
+        <p>Expired / Invalid</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <h2 id="totalAttendance">0</h2>
+        <p>Attendance Records</p>
+      </div>
+    </div>
+
+    <div class="export-grid">
+      <button class="btn btn-primary" onclick="exportStudentsCSV()">Export Students CSV</button>
+      <button class="btn btn-primary" onclick="exportAttendanceCSV()">Export Attendance CSV</button>
+      <button class="btn btn-primary" onclick="exportBusesCSV()">Export Buses CSV</button>
+      <button class="btn btn-primary" onclick="exportPassesCSV()">Export Passes CSV</button>
+    </div>
+
+    <section class="panel-card chart-panel">
+      <h2>Attendance by Route</h2>
+      <canvas id="attendanceChart"></canvas>
+    </section>
+
+    <section class="panel-card chart-panel">
+      <h2>Pass Status Breakdown</h2>
+      <canvas id="passStatusChart"></canvas>
+    </section>
+
+    <section class="panel-card chart-panel">
+      <h2>Bus Status Overview</h2>
+      <canvas id="busStatusChart"></canvas>
+    </section>
+
+    <div class="admin-grid">
+      <section class="panel-card">
+        <h2>Top Active Routes</h2>
+        <div id="topRoutesList" class="recent-list"></div>
+      </section>
+
+      <section class="panel-card">
+        <h2>Recent Transport Activity</h2>
+        <div id="recentActivityList" class="recent-list"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="reports.js"></script>
+<script>
+  const currentDate = document.getElementById("currentDate");
+  if (currentDate) {
+    currentDate.textContent = new Date().toLocaleDateString(undefined, {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    });
+  }
+</script>
+
+</body>
+</html>

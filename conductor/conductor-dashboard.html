@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conductor Dashboard</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/conductor.css">
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+
+  <style>
+    #map {
+      width: 100%;
+      height: 420px;
+      border-radius: 20px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      #map {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+      <div class="sidebar-logo">
+        🧑‍✈️
+      </div>
+
+      <div>
+        <h2>Conductor</h2>
+        <p>BusManage</p>
+      </div>
+
+    </div>
+
+    <ul>
+      <li>
+        <a
+          class="active-link"
+          href="conductor-dashboard.html"
+        >
+          Dashboard
+        </a>
+      </li>
+
+      <li>
+        <a href="scan-pass.html">
+          Scan Pass
+        </a>
+      </li>
+
+      <li>
+        <a href="attendance.html">
+          Attendance
+        </a>
+      </li>
+
+      <li>
+        <a href="notifications.html">
+          Notifications
+        </a>
+      </li>
+    </ul>
+
+    <button
+      class="btn logout-btn"
+      onclick="logoutUser()"
+    >
+      Logout
+    </button>
+
+  </aside>
+
+
+  <main class="dashboard-content">
+
+    <div class="mobile-header">
+      <h1>Conductor Dashboard</h1>
+    </div>
+
+
+    <section class="hero-conductor-card">
+
+      <div>
+
+        <h1>
+          Live Bus Control 🚌
+        </h1>
+
+        <p>
+          Manage live tracking, attendance,
+          and passenger verification in real time.
+        </p>
+
+      </div>
+
+      <div class="hero-badge">
+        Tracking Active
+      </div>
+
+    </section>
+
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h2 id="assignedBus">
+          Bus-01
+        </h2>
+
+        <p>
+          Assigned Bus
+        </p>
+      </div>
+
+
+      <div class="stat-card">
+        <h2 id="assignedRoute">
+          Route A
+        </h2>
+
+        <p>
+          Assigned Route
+        </p>
+      </div>
+
+
+      <div class="stat-card">
+        <h2 id="attendanceCount">
+          0
+        </h2>
+
+        <p>
+          Attendance Today
+        </p>
+      </div>
+
+    </div>
+
+
+    <section class="panel-card">
+
+      <h2>
+        Live Location Controls
+      </h2>
+
+      <div class="tracking-grid">
+
+        <input
+          type="text"
+          id="currentStopInput"
+          placeholder="Current Stop"
+        >
+
+        <input
+          type="number"
+          id="etaInput"
+          placeholder="ETA Minutes"
+        >
+
+      </div>
+
+
+      <div class="tracking-buttons">
+
+        <button
+          class="btn btn-primary"
+          onclick="startSharingLocation()"
+        >
+          Start Sharing
+        </button>
+
+
+        <button
+          class="btn btn-danger"
+          onclick="stopSharingLocation()"
+        >
+          Stop Sharing
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <section class="panel-card">
+
+      <h2>
+        Live Bus Map
+      </h2>
+
+      <div id="map"></div>
+
+    </section>
+
+
+    <section class="quick-actions-section">
+
+      <h2>
+        Quick Actions
+      </h2>
+
+      <div class="quick-actions-grid">
+
+        <a
+          href="scan-pass.html"
+          class="quick-action-card"
+        >
+
+          <div class="quick-icon">
+            🎫
+          </div>
+
+          <h3>
+            Scan Pass
+          </h3>
+
+          <p>
+            Verify student bus passes quickly.
+          </p>
+
+        </a>
+
+
+        <a
+          href="attendance.html"
+          class="quick-action-card"
+        >
+
+          <div class="quick-icon">
+            📋
+          </div>
+
+          <h3>
+            Attendance
+          </h3>
+
+          <p>
+            Mark and manage daily attendance.
+          </p>
+
+        </a>
+
+
+        <a
+          href="notifications.html"
+          class="quick-action-card"
+        >
+
+          <div class="quick-icon">
+            🔔
+          </div>
+
+          <h3>
+            Notifications
+          </h3>
+
+          <p>
+            Send alerts and updates to students.
+          </p>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<nav class="mobile-bottom-nav">
+
+  <a
+    class="active-nav"
+    href="conductor-dashboard.html"
+  >
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a href="scan-pass.html">
+    <span>🎫</span>
+    <small>Scan</small>
+  </a>
+
+  <a href="attendance.html">
+    <span>📋</span>
+    <small>Attendance</small>
+  </a>
+
+  <a href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+
+</nav>
+
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script type="module" src="../js/auth.js"></script>
+
+<script type="module" src="conductor.js"></script>
+
+</body>
+</html>

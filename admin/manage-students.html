@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Students</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a class="active-link" href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="admin-topbar">
+      <div>
+        <h1>Manage Students</h1>
+        <p>Add, update, and organize student transport records.</p>
+      </div>
+    </div>
+
+    <section class="panel-card">
+      <h2>Add / Update Student</h2>
+      <form id="studentForm" class="admin-form">
+        <input type="text" id="studentName" placeholder="Student Name" required>
+        <input type="email" id="studentEmail" placeholder="Student Email" required>
+        <input type="text" id="studentRoute" placeholder="Route Name" required>
+        <input type="text" id="studentBus" placeholder="Bus Number" required>
+
+        <input type="hidden" id="studentDocId" value="">
+
+        <div class="form-actions">
+          <button type="submit" id="saveStudentBtn" class="btn btn-primary">Add Student</button>
+          <button type="button" id="cancelEditBtn" class="btn btn-outline" style="display:none;">Cancel Edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel-card">
+      <h2>Search & Filters</h2>
+      <div class="search-grid">
+        <input type="text" id="studentSearch" placeholder="Search name, email, route, or bus">
+        <select id="statusFilter">
+          <option value="all">All Pass Status</option>
+          <option value="Valid">Valid</option>
+          <option value="Expired">Expired</option>
+          <option value="Invalid">Invalid</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Student List</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Route</th>
+              <th>Bus</th>
+              <th>Fee Status</th>
+              <th>Pass Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="manage-students.js"></script>
+</body>
+</html>

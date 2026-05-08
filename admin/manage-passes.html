@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Passes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a class="active-link" href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+
+    <div class="admin-topbar">
+      <div>
+        <h1>Manage Passes</h1>
+        <p>Set fee payment, validity, and pass status for students.</p>
+      </div>
+    </div>
+
+    <section class="panel-card">
+      <h2>Search & Filters</h2>
+
+      <div class="search-grid">
+        <input
+          type="text"
+          id="passSearch"
+          placeholder="Search by name, email, route, bus, or pass ID"
+        >
+        <select id="passFilter">
+          <option value="all">All Passes</option>
+          <option value="Valid">Valid</option>
+          <option value="Expired">Expired</option>
+          <option value="Invalid">Invalid</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Student Pass Control</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Route</th>
+              <th>Bus</th>
+              <th>Fee Status</th>
+              <th>Fee Paid Date</th>
+              <th>Valid Until</th>
+              <th>Pass Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="passesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="manage-passes.js"></script>
+
+</body>
+</html>

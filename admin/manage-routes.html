@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Routes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a class="active-link" href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+
+    <div class="admin-topbar">
+      <div>
+        <h1>Manage Routes</h1>
+        <p>Create, update, and organize bus routes for tracking.</p>
+      </div>
+    </div>
+
+    <section class="panel-card">
+      <h2>Add / Update Route</h2>
+
+      <form id="routeForm" class="admin-form">
+        <input
+          type="text"
+          id="routeName"
+          placeholder="Route Name"
+          required
+        >
+
+        <textarea
+          id="routeStops"
+          placeholder="Stops separated by commas"
+          rows="4"
+          required
+        ></textarea>
+
+        <textarea
+          id="routePath"
+          placeholder='Route Coordinates JSON
+[
+  { "lat": 28.9845, "lng": 79.4110 },
+  { "lat": 28.9880, "lng": 79.4180 }
+]'
+          rows="8"
+          required
+        ></textarea>
+
+        <input type="hidden" id="routeDocId">
+
+        <div class="form-actions">
+          <button type="submit" id="saveRouteBtn" class="btn btn-primary">
+            Save Route
+          </button>
+
+          <button
+            type="button"
+            id="cancelRouteEditBtn"
+            class="btn btn-outline"
+            style="display:none;"
+          >
+            Cancel Edit
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel-card">
+      <h2>Search & Filters</h2>
+      <div class="search-grid">
+        <input
+          type="text"
+          id="routeSearch"
+          placeholder="Search route name or stops"
+        >
+        <select id="routeFilter">
+          <option value="all">All Routes</option>
+          <option value="withPath">With Path</option>
+          <option value="withoutPath">Without Path</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Available Routes</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Route</th>
+              <th>Stops</th>
+              <th>Path Points</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="routesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="manage-routes.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/conductor.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🧑‍✈️</div>
+      <div>
+        <h2>Conductor</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="conductor-dashboard.html">Dashboard</a></li>
+      <li><a href="scan-pass.html">Scan Pass</a></li>
+      <li><a class="active-link" href="attendance.html">Attendance</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="mobile-header">
+      <h1>Attendance</h1>
+    </div>
+
+    <section class="hero-conductor-card">
+      <div>
+        <h1>Bus Attendance</h1>
+        <p>Mark students present and keep bus records updated.</p>
+      </div>
+      <div class="hero-badge">Daily Log</div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Attendance List</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Bus</th>
+              <th>Route</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="mobile-bottom-nav">
+  <a href="conductor-dashboard.html">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a href="scan-pass.html">
+    <span>🎫</span>
+    <small>Scan</small>
+  </a>
+
+  <a class="active-nav" href="attendance.html">
+    <span>📋</span>
+    <small>Attendance</small>
+  </a>
+
+  <a href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+</nav>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="conductor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🎓</div>
+
+      <div>
+        <h2>Student</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="student-dashboard.html">Dashboard</a></li>
+      <li><a class="active-link" href="profile.html">Profile</a></li>
+      <li><a href="my-pass.html">My Pass</a></li>
+      <li><a href="bus-status.html">Bus Status</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">
+      Logout
+    </button>
+
+  </aside>
+
+
+  <main class="dashboard-content">
+
+    <div class="mobile-header">
+      <h1>Profile</h1>
+    </div>
+
+
+    <section class="profile-hero">
+
+      <div class="profile-avatar">
+        🎓
+      </div>
+
+      <div>
+
+        <h1 id="profileName">
+          Student
+        </h1>
+
+        <p id="profileEmail">
+          student@email.com
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="panel-card">
+
+      <h2>
+        Student Information
+      </h2>
+
+      <div class="profile-grid">
+
+        <div class="profile-item">
+          <span>Bus Number</span>
+          <strong id="profileBus">—</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Assigned Route</span>
+          <strong id="profileRoute">—</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Pass ID</span>
+          <strong id="profilePassId">—</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Fee Status</span>
+          <strong id="profileFeeStatus">—</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Pass Validity</span>
+          <strong id="profileValidity">—</strong>
+        </div>
+
+        <div class="profile-item">
+          <span>Account Role</span>
+          <strong>Student</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="panel-card">
+
+      <h2>
+        Transport Features
+      </h2>
+
+      <div class="feature-grid">
+
+        <div class="feature-item">
+          <span>📍</span>
+          Live GPS Tracking
+        </div>
+
+        <div class="feature-item">
+          <span>🔔</span>
+          Real-time Notifications
+        </div>
+
+        <div class="feature-item">
+          <span>🎫</span>
+          Digital Smart Pass
+        </div>
+
+        <div class="feature-item">
+          <span>📊</span>
+          Route Monitoring
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<nav class="mobile-bottom-nav">
+
+  <a href="student-dashboard.html">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a href="my-pass.html">
+    <span>🎫</span>
+    <small>Pass</small>
+  </a>
+
+  <a href="bus-status.html">
+    <span>🚌</span>
+    <small>Bus</small>
+  </a>
+
+  <a href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+
+  <a
+    class="active-nav"
+    href="profile.html"
+  >
+    <span>👤</span>
+    <small>Profile</small>
+  </a>
+
+</nav>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="profile.js"></script>
+
+</body>
+</html>

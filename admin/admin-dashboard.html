@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a class="active-link" href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="admin-topbar">
+      <div>
+        <h1>Welcome Admin</h1>
+        <p>Manage transport operations from one dashboard.</p>
+      </div>
+      <div class="admin-date" id="currentDate"></div>
+    </div>
+
+    <div class="smart-overview-grid">
+      <div class="overview-card blue-card">
+        <div class="overview-top">
+          <span>🎓</span>
+          <p>Total Students</p>
+        </div>
+        <h2 id="totalStudents">0</h2>
+        <small>Registered transport users</small>
+      </div>
+
+      <div class="overview-card dark-card">
+        <div class="overview-top">
+          <span>🧑‍✈️</span>
+          <p>Conductors</p>
+        </div>
+        <h2 id="totalConductors">0</h2>
+        <small>Active transport staff</small>
+      </div>
+
+      <div class="overview-card green-card">
+        <div class="overview-top">
+          <span>🚌</span>
+          <p>Total Buses</p>
+        </div>
+        <h2 id="totalBuses">0</h2>
+        <small>Institute transport fleet</small>
+      </div>
+
+      <div class="overview-card orange-card">
+        <div class="overview-top">
+          <span>🎫</span>
+          <p>Active Passes</p>
+        </div>
+        <h2 id="activePasses">0</h2>
+        <small>Valid student passes</small>
+      </div>
+    </div>
+
+    <section class="panel-card">
+      <div class="section-header">
+        <h2>Smart Alerts</h2>
+        <span class="alert-badge" id="totalAlertsBadge">0 Alerts</span>
+      </div>
+      <div id="alertsContainer" class="alerts-grid"></div>
+    </section>
+
+    <div class="admin-grid">
+      <section class="panel-card">
+        <h2>Quick Actions</h2>
+        <div class="action-grid">
+          <a class="action-card" href="manage-students.html">
+            <span>🎓</span>
+            <strong>Students</strong>
+            <p>Add, view, and manage student records.</p>
+          </a>
+
+          <a class="action-card" href="manage-conductors.html">
+            <span>🧑‍✈️</span>
+            <strong>Conductors</strong>
+            <p>Create conductor accounts and assign duties.</p>
+          </a>
+
+          <a class="action-card" href="manage-routes.html">
+            <span>🛣️</span>
+            <strong>Routes</strong>
+            <p>Build routes and manage bus stop paths.</p>
+          </a>
+
+          <a class="action-card" href="reports.html">
+            <span>📊</span>
+            <strong>Reports</strong>
+            <p>Check attendance and analytics reports.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel-card">
+        <h2>System Overview</h2>
+        <div class="overview-list">
+          <div class="overview-item">
+            <span class="dot green"></span>
+            <div>
+              <strong>Live Tracking</strong>
+              <p>Conductor location sharing is active when started.</p>
+            </div>
+          </div>
+
+          <div class="overview-item">
+            <span class="dot blue"></span>
+            <div>
+              <strong>QR Verification</strong>
+              <p>Students can be verified quickly using pass ID or QR.</p>
+            </div>
+          </div>
+
+          <div class="overview-item">
+            <span class="dot purple"></span>
+            <div>
+              <strong>Notifications</strong>
+              <p>Admin announcements are visible to all students.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel-card recent-card">
+      <h2>Recent Activity</h2>
+      <div class="recent-list">
+        <div class="recent-item">
+          <strong>Student pass created</strong>
+          <span>New student registered and assigned pass.</span>
+        </div>
+        <div class="recent-item">
+          <strong>Route updated</strong>
+          <span>Route and stop list updated for tracking.</span>
+        </div>
+        <div class="recent-item">
+          <strong>Attendance marked</strong>
+          <span>Conductor marked bus attendance for today.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="admin.js"></script>
+<script>
+  const currentDate = document.getElementById("currentDate");
+  if (currentDate) {
+    currentDate.textContent = new Date().toLocaleDateString(undefined, {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    });
+  }
+</script>
+
+</body>
+</html>

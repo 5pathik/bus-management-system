@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Requests</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">🚌</div>
+        <div>
+          <h2>Admin Panel</h2>
+          <p>BusManage</p>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="requests.html" class="active-link">Requests</a></li>
+      </ul>
+
+      <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+      <h1>Pending Requests</h1>
+      <div id="requestsList" class="recent-list"></div>
+    </main>
+  </div>
+
+  <script type="module" src="../js/auth.js"></script>
+  <script type="module" src="requests.js"></script>
+</body>
+</html>

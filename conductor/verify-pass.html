@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Pass</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/conductor.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Conductor</h2>
+      <ul>
+        <li><a href="conductor-dashboard.html">Dashboard</a></li>
+        <li><a href="verify-pass.html">Verify Pass</a></li>
+        <li><a href="bus-attendance.html">Bus Attendance</a></li>
+      </ul>
+      <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+      <h1>Verify Student Pass</h1>
+
+      <div class="form-card">
+        <input
+          type="text"
+          id="passIdInput"
+          placeholder="Enter Pass ID like PASS-123456"
+        />
+        <button class="btn" onclick="verifyPass()">Verify</button>
+      </div>
+
+      <div class="scanner-card">
+        <h3>Scan QR Code</h3>
+        <div id="reader"></div>
+      </div>
+
+      <div id="verifyResult" class="result-card">
+        Enter a Pass ID or scan the QR code.
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script type="module" src="conductor.js"></script>
+</body>
+</html>

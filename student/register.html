@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+<body>
+  <main class="auth-container">
+    <form id="requestForm" class="auth-form">
+      <h2>Student Registration Request</h2>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="phone" placeholder="Phone" required>
+      <button type="submit" class="btn btn-primary">Submit Request</button>
+      <p id="msg"></p>
+    </form>
+  </main>
+
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script type="module" src="register-request.js"></script>
+</body>
+</html>

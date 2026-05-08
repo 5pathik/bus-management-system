@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSV Import</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">🚌</div>
+        <div>
+          <h2>Admin Panel</h2>
+          <p>BusManage</p>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="import-csv.html" class="active-link">CSV Import</a></li>
+      </ul>
+
+      <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+      <h1>Import CSV</h1>
+
+      <section class="panel-card">
+        <select id="targetCollection">
+          <option value="students">Students</option>
+          <option value="users">Conductors</option>
+          <option value="buses">Buses</option>
+          <option value="routes">Routes</option>
+        </select>
+
+        <input type="file" id="csvFile" accept=".csv">
+        <button class="btn btn-primary" id="uploadBtn">Upload CSV</button>
+
+        <p id="uploadMsg"></p>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+  <script type="module" src="import-csv.js"></script>
+</body>
+</html>

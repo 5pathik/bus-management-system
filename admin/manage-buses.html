@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Buses</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a class="active-link" href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">
+      Logout
+    </button>
+
+  </aside>
+
+  <main class="dashboard-content">
+
+    <div class="admin-topbar">
+      <div>
+        <h1>Manage Buses</h1>
+        <p>Update routes, conductors, and bus operational status.</p>
+      </div>
+    </div>
+
+    <section class="panel-card">
+
+      <h2>Add / Update Bus</h2>
+
+      <form id="busForm" class="admin-form">
+
+        <input
+          type="text"
+          id="busNumber"
+          placeholder="Bus Number"
+          required
+        >
+
+        <input
+          type="text"
+          id="busName"
+          placeholder="Bus Name"
+          required
+        >
+
+        <input
+          type="text"
+          id="busRoute"
+          placeholder="Assigned Route"
+          required
+        >
+
+        <input
+          type="text"
+          id="busConductor"
+          placeholder="Assigned Conductor"
+          required
+        >
+
+        <input
+          type="number"
+          id="busCapacity"
+          placeholder="Capacity"
+          required
+        >
+
+        <select id="busStatus" required>
+          <option value="Active">Active</option>
+          <option value="Maintenance">Maintenance</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+
+        <input
+          type="hidden"
+          id="busDocId"
+        >
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="saveBusBtn"
+          >
+            Add Bus
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-outline"
+            id="cancelBusEditBtn"
+            style="display:none;"
+          >
+            Cancel Edit
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <section class="panel-card">
+
+      <h2>Search & Filters</h2>
+
+      <div class="search-grid">
+
+        <input
+          type="text"
+          id="busSearch"
+          placeholder="Search bus number, name, route, or conductor"
+        >
+
+        <select id="busFilter">
+
+          <option value="all">
+            All Buses
+          </option>
+
+          <option value="Active">
+            Active
+          </option>
+
+          <option value="Maintenance">
+            Maintenance
+          </option>
+
+          <option value="Inactive">
+            Inactive
+          </option>
+
+        </select>
+
+      </div>
+
+    </section>
+
+
+    <section class="panel-card">
+
+      <h2>Bus List</h2>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Bus No</th>
+              <th>Name</th>
+              <th>Route</th>
+              <th>Conductor</th>
+              <th>Capacity</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="busTableBody">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="manage-buses.js"></script>
+
+</body>
+</html>

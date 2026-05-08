@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bus Attendance</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/conductor.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <h2>Conductor</h2>
+
+    <ul>
+      <li><a href="conductor-dashboard.html">Dashboard</a></li>
+      <li><a href="verify-pass.html">Verify Pass</a></li>
+      <li><a href="bus-attendance.html">Bus Attendance</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">
+      Logout
+    </button>
+
+  </aside>
+
+  <main class="dashboard-content">
+
+    <h1>Bus Attendance</h1>
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Bus</th>
+            <th>Route</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+
+        <tbody id="attendanceTableBody">
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </main>
+
+</div>
+
+<script type="module" src="conductor.js"></script>
+
+</body>
+</html>

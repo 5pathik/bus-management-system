@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bus Status</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/student.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    #map {
+      height: 420px;
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      #map {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <h2>Student</h2>
+
+    <ul>
+      <li><a href="student-dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="my-pass.html">My Pass</a></li>
+      <li><a class="active-link" href="bus-status.html">Bus Status</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="mobile-header">
+      <h1>Bus Status</h1>
+    </div>
+
+    <h1>Live Bus Tracking</h1>
+
+    <div id="arrivalAlert" class="arrival-alert"></div>
+
+    <div class="bus-info-card">
+      <h2>Bus-01</h2>
+      <p id="currentStop">Current Stop: Loading...</p>
+      <p id="etaText">ETA: Loading...</p>
+      <p id="lastUpdated">Last Updated: --</p>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="route-stops-card">
+      <h2>Route Stops</h2>
+      <ul id="routeStopsList"></ul>
+    </div>
+  </main>
+</div>
+
+<nav class="mobile-bottom-nav">
+  <a href="student-dashboard.html">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a href="my-pass.html">
+    <span>🎫</span>
+    <small>Pass</small>
+  </a>
+
+  <a class="active-nav" href="bus-status.html">
+    <span>🚌</span>
+    <small>Bus</small>
+  </a>
+
+  <a href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+
+  <a href="profile.html">
+    <span>👤</span>
+    <small>Profile</small>
+  </a>
+</nav>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="student.js"></script>
+
+</body>
+</html>

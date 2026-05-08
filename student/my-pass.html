@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Pass</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <h2>Student</h2>
+
+    <ul>
+      <li><a href="student-dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a class="active-link" href="my-pass.html">My Pass</a></li>
+      <li><a href="bus-status.html">Bus Status</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="mobile-header">
+      <h1>My Pass</h1>
+    </div>
+
+    <div class="pass-actions">
+      <button class="btn btn-primary" onclick="downloadPassPDF()">Download PDF</button>
+      <button class="btn btn-outline" onclick="window.print()">Print Pass</button>
+    </div>
+
+    <div id="passCard" class="pass-card">
+      Loading pass...
+    </div>
+
+    <div id="qrCode" class="qr-wrapper"></div>
+  </main>
+
+</div>
+
+<nav class="mobile-bottom-nav">
+  <a href="student-dashboard.html">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a class="active-nav" href="my-pass.html">
+    <span>🎫</span>
+    <small>Pass</small>
+  </a>
+
+  <a href="bus-status.html">
+    <span>🚌</span>
+    <small>Bus</small>
+  </a>
+
+  <a href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+
+  <a href="profile.html">
+    <span>👤</span>
+    <small>Profile</small>
+  </a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="student.js"></script>
+
+</body>
+</html>

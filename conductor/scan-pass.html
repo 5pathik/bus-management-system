@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scan Pass</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/conductor.css">
+
+  <style>
+    #reader {
+      width: 100%;
+      max-width: 520px;
+      margin-top: 20px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🧑‍✈️</div>
+      <div>
+        <h2>Conductor</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="conductor-dashboard.html">Dashboard</a></li>
+      <li><a class="active-link" href="scan-pass.html">Scan Pass</a></li>
+      <li><a href="attendance.html">Attendance</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="mobile-header">
+      <h1>Scan Pass</h1>
+    </div>
+
+    <section class="hero-conductor-card">
+      <div>
+        <h1>Pass Verification</h1>
+        <p>Scan QR or enter pass ID to verify student transport access.</p>
+      </div>
+      <div class="hero-badge">Fast Check</div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Enter Pass ID</h2>
+      <div class="tracking-grid">
+        <input type="text" id="passIdInput" placeholder="Enter Pass ID" />
+      </div>
+
+      <div class="tracking-buttons">
+        <button class="btn btn-primary" onclick="verifyPass()">Verify Pass</button>
+      </div>
+
+      <div id="verifyResult" class="verify-result"></div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Scan QR Code</h2>
+      <p>Use the camera to scan a student's QR pass.</p>
+      <div id="reader"></div>
+    </section>
+  </main>
+</div>
+
+<nav class="mobile-bottom-nav">
+  <a href="conductor-dashboard.html">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a class="active-nav" href="scan-pass.html">
+    <span>🎫</span>
+    <small>Scan</small>
+  </a>
+
+  <a href="attendance.html">
+    <span>📋</span>
+    <small>Attendance</small>
+  </a>
+
+  <a href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+</nav>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="conductor.js"></script>
+
+</body>
+</html>

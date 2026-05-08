@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifications</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <li><a href="notifications.html">Notifications</a></li>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+
+    <div class="admin-topbar">
+      <div>
+        <h1>Notification Center</h1>
+        <p>Send announcements and alerts to students.</p>
+      </div>
+    </div>
+
+    <section class="panel-card">
+
+      <h2>Create Notification</h2>
+
+      <form id="notificationForm" class="admin-form">
+
+        <input
+          type="text"
+          id="notificationTitle"
+          placeholder="Notification Title"
+          required
+        />
+
+        <textarea
+          id="notificationMessage"
+          placeholder="Notification Message"
+          rows="5"
+          required
+        ></textarea>
+
+        <select id="notificationType">
+          <option value="all">All Students</option>
+          <option value="route">Specific Route</option>
+          <option value="bus">Specific Bus</option>
+        </select>
+
+        <input
+          type="text"
+          id="targetValue"
+          placeholder="Enter Route or Bus Number"
+        />
+
+        <button type="submit" class="btn btn-primary">
+          Send Notification
+        </button>
+
+      </form>
+
+    </section>
+
+    <section class="panel-card">
+
+      <h2>Recent Notifications</h2>
+
+      <div id="adminNotificationsList" class="notifications-grid">
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="notifications.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,957 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #0f172a;
+  color: white;
+  padding: 25px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.logout-btn {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.stats-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.stat-card h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.pass-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.pass-header h2 {
+  margin-bottom: 8px;
+}
+
+.pass-details p {
+  margin: 10px 0;
+}
+
+.qr-box {
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  display: inline-block;
+  border-radius: 16px;
+}
+
+.notification-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.notification-card h3 {
+  margin-bottom: 10px;
+}
+
+.bus-info-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.route-stops-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.route-stops-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.route-stops-card li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.active-stop {
+  background: #dff6dd;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.arrival-alert {
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 16px;
+  border-radius: 14px;
+  margin-top: 20px;
+  font-weight: bold;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+  }
+
+  .sidebar ul li {
+    margin-bottom: 0;
+  }
+
+  .dashboard-content {
+    padding: 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+
+  .pass-card,
+  .bus-info-card,
+  .route-stops-card,
+  .notification-card {
+    max-width: 100%;
+    width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .qr-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .route-stops-card li {
+    padding: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+.profile-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-top: 20px;
+  max-width: 520px;
+}
+
+.profile-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 18px;
+  border: 4px solid #e5e7eb;
+}
+
+.profile-form {
+  display: grid;
+  gap: 12px;
+}
+
+.profile-form label {
+  font-weight: 600;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    max-width: 100%;
+  }
+}
+.pass-warning {
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.pass-warning.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.pass-warning.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+.notification-badge {
+  background: #ef4444;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+
+.notification-student-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.notification-header span {
+  background: #2563eb;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+.pass-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pass-card {
+  background: white;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  max-width: 520px;
+}
+
+.pass-header {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.pass-header h2 {
+  margin: 0;
+}
+
+.pass-details {
+  display: grid;
+  gap: 10px;
+}
+
+.qr-wrapper {
+  margin-top: 20px;
+}
+
+@media print {
+
+  body * {
+    visibility: hidden;
+  }
+
+  #passCard,
+  #passCard * {
+    visibility: visible;
+  }
+
+  #passCard {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+.mobile-header {
+  display: none;
+}
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+.active-link {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .mobile-header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .dashboard-content {
+    padding-bottom: 100px;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
+
+    background: white;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.08);
+
+    z-index: 999;
+  }
+
+  .mobile-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: #64748b;
+
+    font-size: 0.85rem;
+    gap: 4px;
+
+    flex: 1;
+    height: 100%;
+  }
+
+  .mobile-bottom-nav a span {
+    font-size: 1.2rem;
+  }
+
+  .mobile-bottom-nav .active-nav {
+    color: #2563eb;
+    font-weight: 700;
+  }
+
+  .dashboard-content {
+    padding: 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pass-card {
+    max-width: 100%;
+  }
+}
+.pass-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pass-card {
+  background: white;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  max-width: 520px;
+}
+
+.pass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pass-header h2 {
+  margin: 0;
+}
+
+.pass-header p {
+  margin-top: 6px;
+  color: #64748b;
+}
+
+.pass-status {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.status-valid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-expired {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-invalid {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.pass-details {
+  display: grid;
+  gap: 14px;
+}
+
+.pass-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pass-row span {
+  color: #64748b;
+}
+
+.pass-warning {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+}
+
+.pass-warning.status-valid {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.pass-warning.status-expired {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.pass-warning.status-invalid {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.qr-wrapper {
+  margin-top: 20px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #0f172a;
+}
+
+.mobile-header {
+  display: none;
+}
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .mobile-header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .dashboard-content {
+    padding: 18px;
+    padding-bottom: 100px;
+  }
+
+  .pass-card {
+    max-width: 100%;
+    width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .pass-header {
+    flex-direction: column;
+  }
+
+  .pass-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .pass-actions {
+    flex-direction: column;
+  }
+
+  .pass-actions .btn {
+    width: 100%;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.08);
+    z-index: 999;
+  }
+
+  .mobile-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 0.85rem;
+    gap: 4px;
+    flex: 1;
+    height: 100%;
+  }
+
+  .mobile-bottom-nav a span {
+    font-size: 1.2rem;
+  }
+
+  .mobile-bottom-nav .active-nav {
+    color: #2563eb;
+    font-weight: 700;
+  }
+}
+.notifications-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.arrival-alert {
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 16px;
+  border-radius: 14px;
+  margin-top: 20px;
+  font-weight: bold;
+  display: none;
+}
+
+.notification-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.notification-card h3 {
+  margin-bottom: 10px;
+}
+
+.bus-info-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.route-stops-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.route-stops-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.route-stops-card li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.active-stop {
+  background: #dff6dd;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.hero-student-card {
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  color: white;
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+.hero-student-card h1 {
+  margin: 0 0 10px;
+}
+
+.hero-student-card p {
+  margin: 0;
+  opacity: 0.95;
+}
+
+.hero-badge {
+  background: rgba(255,255,255,0.16);
+
+  padding: 12px 18px;
+
+  border-radius: 999px;
+
+  font-weight: bold;
+}
+
+.quick-actions-section {
+  margin-top: 30px;
+}
+
+.quick-actions-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 18px;
+
+  margin-top: 18px;
+}
+
+.quick-action-card {
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  transition: 0.2s ease;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+}
+
+.quick-action-card:hover {
+  transform: translateY(-4px);
+}
+
+.quick-icon {
+  font-size: 2rem;
+
+  margin-bottom: 14px;
+}
+
+.quick-action-card h3 {
+  margin-bottom: 8px;
+}
+
+.quick-action-card p {
+  color: #64748b;
+}
+
+.feature-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+.feature-item {
+  background: #f8fafc;
+
+  padding: 18px;
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feature-item span {
+  font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+
+  .hero-student-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.profile-hero {
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  color: white;
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.18);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.4rem;
+}
+
+.profile-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 18px;
+
+  margin-top: 20px;
+}
+
+.profile-item {
+  background: #f8fafc;
+
+  border-radius: 16px;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-item span {
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+
+  .profile-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.notifications-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.hero-student-card {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.hero-student-card h1 {
+  margin: 0 0 10px;
+}
+
+.hero-student-card p {
+  margin: 0;
+  opacity: 0.95;
+}
+
+.hero-badge {
+  background: rgba(255,255,255,0.16);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.notification-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.notification-card h3 {
+  margin-bottom: 10px;
+}
+
+.notification-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-student-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

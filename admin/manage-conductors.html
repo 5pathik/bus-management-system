@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Conductors</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🚌</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="admin-dashboard.html">Dashboard</a></li>
+      <li><a href="manage-students.html">Manage Students</a></li>
+      <li><a class="active-link" href="manage-conductors.html">Manage Conductors</a></li>
+      <li><a href="manage-buses.html">Manage Buses</a></li>
+      <li><a href="manage-routes.html">Manage Routes</a></li>
+      <li><a href="manage-passes.html">Manage Passes</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+    <div class="admin-topbar">
+      <div>
+        <h1>Manage Conductors</h1>
+        <p>Create and update conductor accounts, buses, and routes.</p>
+      </div>
+    </div>
+
+    <section class="panel-card">
+      <h2>Add / Update Conductor</h2>
+      <form id="conductorForm" class="admin-form">
+        <input type="text" id="conductorName" placeholder="Conductor Name" required>
+        <input type="email" id="conductorEmail" placeholder="Conductor Email" required>
+        <input type="password" id="conductorPassword" placeholder="Password (for new conductor only)" required>
+        <input type="text" id="conductorBus" placeholder="Assigned Bus" required>
+        <input type="text" id="conductorRoute" placeholder="Assigned Route" required>
+
+        <input type="hidden" id="conductorDocId" value="">
+
+        <div class="form-actions">
+          <button type="submit" id="saveConductorBtn" class="btn btn-primary">
+            Add Conductor
+          </button>
+
+          <button type="button" id="cancelConductorEditBtn" class="btn btn-outline" style="display:none;">
+            Cancel Edit
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel-card">
+      <h2>Search & Filters</h2>
+      <div class="search-grid">
+        <input type="text" id="conductorSearch" placeholder="Search name, email, bus, or route">
+        <select id="conductorFilter">
+          <option value="all">All Conductors</option>
+          <option value="bus">Has Bus Assigned</option>
+          <option value="route">Has Route Assigned</option>
+          <option value="empty">Missing Assignment</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Conductor List</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Bus</th>
+              <th>Route</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="conductorTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="manage-conductors.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifications</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">🎓</div>
+
+      <div>
+        <h2>Student</h2>
+        <p>BusManage</p>
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="student-dashboard.html">Dashboard</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="my-pass.html">My Pass</a></li>
+      <li><a href="bus-status.html">Bus Status</a></li>
+      <li><a class="active-link" href="notifications.html">Notifications</a></li>
+    </ul>
+
+    <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="dashboard-content">
+
+    <div class="mobile-header">
+      <h1>Notifications</h1>
+    </div>
+
+    <section class="hero-student-card">
+      <div>
+        <h1>Transport Alerts</h1>
+        <p>
+          View announcements, route updates, and important bus-related alerts.
+        </p>
+      </div>
+
+      <div class="hero-badge">
+        Live Updates
+      </div>
+    </section>
+
+    <section class="panel-card">
+      <h2>Recent Notifications</h2>
+      <div id="notificationContainer" class="notifications-grid">
+        Loading notifications...
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<nav class="mobile-bottom-nav">
+  <a href="student-dashboard.html">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a href="my-pass.html">
+    <span>🎫</span>
+    <small>Pass</small>
+  </a>
+
+  <a href="bus-status.html">
+    <span>🚌</span>
+    <small>Bus</small>
+  </a>
+
+  <a class="active-nav" href="notifications.html">
+    <span>🔔</span>
+    <small>Alerts</small>
+  </a>
+
+  <a href="profile.html">
+    <span>👤</span>
+    <small>Profile</small>
+  </a>
+</nav>
+
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="student.js"></script>
+
+</body>
+</html>

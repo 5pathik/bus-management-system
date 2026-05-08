@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Bus Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #1a2340 0%, #0b1020 55%, #070b14 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .auth-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(8, 13, 26, 0.88);
+      border: 1px solid rgba(120, 160, 255, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      box-sizing: border-box;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 46px;
+    }
+
+    .auth-card h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 30px;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin: 10px 0 26px;
+      color: #b7c2dd;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 8px;
+      color: #d8e2ff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(140, 160, 220, 0.22);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 15px;
+      box-sizing: border-box;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input::placeholder {
+      color: #94a3c7;
+    }
+
+    input:focus {
+      border-color: #6ca6ff;
+      box-shadow: 0 0 0 4px rgba(108, 166, 255, 0.12);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .robot-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #dfe8ff;
+    }
+
+    .robot-check input {
+      width: auto;
+      transform: scale(1.05);
+    }
+
+    .btn {
+      width: 100%;
+      border: none;
+      border-radius: 22px;
+      padding: 16px 18px;
+      margin-top: 16px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #6ea8ff 0%, #4f8ef7 100%);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(79, 142, 247, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #dfe8ff;
+      border: 1px solid rgba(140, 160, 220, 0.18);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #b7c2dd;
+      font-size: 14px;
+    }
+
+    .auth-footer a {
+      color: #9cc3ff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .msg {
+      margin-top: 12px;
+      font-size: 14px;
+      min-height: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .auth-card {
+        padding: 26px 20px;
+        border-radius: 22px;
+      }
+
+      .auth-card h2 {
+        font-size: 26px;
+      }
+
+      .btn {
+        font-size: 18px;
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-wrap">
+    <form class="auth-card" onsubmit="registerUser(event)">
+      <div class="brand">🚌</div>
+
+      <h2>Register</h2>
+      <p class="subtitle">Create your student account to request transport access.</p>
+
+      <label>Full Name</label>
+      <input
+        type="text"
+        id="fullName"
+        placeholder="Enter your full name"
+        required
+      />
+
+      <label>Email</label>
+      <input
+        type="email"
+        id="regEmail"
+        placeholder="Enter your email"
+        required
+      />
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="regPassword"
+        placeholder="Create password"
+        required
+      />
+
+      <label class="robot-check">
+        <input type="checkbox" id="robotCheck" />
+        I am not a robot
+      </label>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="window.location.href='login.html'"
+      >
+        Back to Login
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="window.location.href='index.html'"
+      >
+        Back to Home
+      </button>
+
+      <div class="auth-footer">
+        Already have an account?
+        <a href="login.html">Login here</a>
+      </div>
+
+      <p id="regMsg" class="msg"></p>
+    </form>
+  </div>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

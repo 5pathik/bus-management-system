@@ -15,7 +15,9 @@ function makeTempPassword() {
 }
 
 exports.approveRequest = functions.https.onCall(async (data, context) => {
-  if (!context.auth || !context.auth.token || context.auth.token.email !== "admin1@gmail.com") {
+  const adminEmail = "YOUR_ADMIN_EMAIL@gmail.com";
+
+  if (!context.auth || context.auth.token.email !== adminEmail) {
     throw new functions.https.HttpsError("permission-denied", "Admin only");
   }
 
@@ -59,6 +61,7 @@ exports.approveRequest = functions.https.onCall(async (data, context) => {
       passId: `PASS-${Date.now()}`,
       feeStatus: "Not Paid",
       passStatus: "Invalid",
+      validUntil: "",
       createdAt: admin.firestore.FieldValue.serverTimestamp()
     });
   }

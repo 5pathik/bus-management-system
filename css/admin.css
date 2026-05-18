@@ -854,3 +854,93 @@ table td {
     grid-template-columns: 1fr;
   }
 }
+.requests-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.request-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+.request-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.request-card h3 {
+  margin: 0 0 6px;
+}
+
+.request-card p {
+  margin: 0;
+  color: #64748b;
+}
+
+.request-status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.request-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.request-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 16px;
+  margin-top: 16px;
+  color: #0f172a;
+}
+
+.request-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.request-empty {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+}
+
+.request-empty h3 {
+  margin: 0 0 8px;
+}
+
+.request-empty p {
+  margin: 0;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .request-card-top {
+    flex-direction: column;
+  }
+
+  .request-details {
+    grid-template-columns: 1fr;
+  }
+
+  .request-actions {
+    justify-content: stretch;
+  }
+
+  .request-actions .btn {
+    width: 100%;
+  }
+}

@@ -1,57 +1,121 @@
-import { auth, db } from "./firebase-config.js";
-
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { db, auth } from "./firebase-config.js";
 
 import {
   collection,
-  doc,
-  setDoc,
   query,
   where,
-  getDocs
+  getDocs,
+  addDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-window.registerUser = async function (event) {
+const loginMsg = document.getElementById("loginMsg");
+
+/* -----------------------------
+   LOGIN
+----------------------------- */
+window.loginUser = async function (event) {
   event.preventDefault();
 
-  const fullName = document.getElementById("fullName").value.trim();
-  const email = document.getElementById("regEmail").value.trim();
-  const password = document.getElementById("regPassword").value.trim();
-  const robotCheck = document.getElementById("robotCheck");
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
 
-  if (!robotCheck || !robotCheck.checked) {
-    alert("Please confirm that you are not a robot.");
+  if (!email || !password) {
+    if (loginMsg) loginMsg.textContent = "Please enter email and password.";
     return;
   }
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const uid = userCredential.user.uid;
+    if (loginMsg) loginMsg.textContent = "Logging in...";
 
-    await setDoc(doc(db, "users", uid), {
-      uid,
-      name: fullName,
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
       email,
+      password
+    );
+
+    const user = userCredential.user;
+
+    const userQuery = query(
+      collection(db, "users"),
+      where("email", "==", user.email)
+    );
+
+    const userSnap = await getDocs(userQuery);
+
+    if (userSnap.empty) {
+      if (loginMsg) loginMsg.textContent = "No role found for this account.";
+      await auth.signOut();
+      return;
+    }
+
+    const userData = userSnap.docs[0].data();
+    const role = (userData.role || "").toLowerCase();
+
+    if (role === "admin") {
+      window.location.href = "admin/admin-dashboard.html";
+    } else if (role === "conductor") {
+      window.location.href = "conductor/conductor-dashboard.html";
+    } else if (role === "student") {
+      window.location.href = "student/student-dashboard.html";
+    } else {
+      if (loginMsg) loginMsg.textContent = "Unknown role in user profile.";
+      await auth.signOut();
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+
+    if (loginMsg) {
+      if (error.code === "auth/invalid-credential") {
+        loginMsg.textContent = "Wrong email or password.";
+      } else if (error.code === "auth/user-not-found") {
+        loginMsg.textContent = "User not found.";
+      } else if (error.code === "auth/wrong-password") {
+        loginMsg.textContent = "Wrong password.";
+      } else {
+        loginMsg.textContent = error.message;
+      }
+    }
+  }
+};
+
+/* -----------------------------
+   REGISTER REQUEST
+   Student submits request only
+----------------------------- */
+window.registerUser = async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const password = document.getElementById("regPassword").value.trim();
+  const robotCheck = document.getElementById("robotCheck")?.checked;
+
+  if (!name || !email || !password) {
+    alert("Please fill all fields.");
+    return;
+  }
+
+  if (!robotCheck) {
+    alert("Please confirm you are not a robot.");
+    return;
+  }
+
+  try {
+    await addDoc(collection(db, "requests"), {
+      name,
+      email,
+      password,
       role: "student",
+      status: "pending",
       createdAt: new Date()
     });
 
-    await setDoc(doc(db, "students", uid), {
-      uid,
-      name: fullName,
-      email,
-      route: "Not assigned",
-      bus: "Not assigned",
-      passId: "PASS-" + Date.now(),
-      createdAt: new Date()
-    });
-
-    alert("Student registered successfully!");
+    alert("Registration request submitted successfully. Wait for admin approval.");
     window.location.href = "login.html";
   } catch (error) {
     console.error("Register error:", error);
@@ -59,52 +123,23 @@ window.registerUser = async function (event) {
   }
 };
 
+/* -----------------------------
+   FORGOT PASSWORD
+----------------------------- */
+window.sendResetLink = async function () {
+  const emailInput = document.getElementById("resetEmail");
+  const email = emailInput?.value.trim();
 
-window.loginUser = async function (event) {
-  event.preventDefault();
-
-  const email = document.getElementById("loginEmail").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
+  if (!email) {
+    alert("Enter your email first.");
+    return;
+  }
 
   try {
-    await signInWithEmailAndPassword(auth, email, password);
-
-    const q = query(collection(db, "users"), where("email", "==", email));
-    const snapshot = await getDocs(q);
-
-    if (snapshot.empty) {
-      alert("No user profile found in Firestore.");
-      return;
-    }
-
-    const userData = snapshot.docs[0].data();
-
-    if (userData.role === "admin") {
-      window.location.href = "admin/admin-dashboard.html";
-    } else if (userData.role === "conductor") {
-      window.location.href = "conductor/conductor-dashboard.html";
-    } else {
-      window.location.href = "student/student-dashboard.html";
-    }
+    await sendPasswordResetEmail(auth, email);
+    alert("Password reset link sent to your email.");
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Reset error:", error);
     alert(error.message);
   }
 };
-
-
-window.logoutUser = async function () {
-  try {
-    await signOut(auth);
-    window.location.href = "../login.html";
-  } catch (error) {
-    console.error("Logout error:", error);
-    alert(error.message);
-  }
-};
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js");
-  });
-}

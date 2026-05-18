@@ -356,21 +356,18 @@ async function loadStudentData(email) {
 
         qrCodeDiv.innerHTML = "";
 
-        new QRCode(
-          qrCodeDiv,
-          {
-            text: JSON.stringify({
-              name: student.name,
-              email: student.email,
-              passId: student.passId,
-              bus: student.bus,
-              route: student.route
-            }),
-
-            width: 180,
-            height: 180
-          }
-        );
+        new QRCode(qrCodeDiv, 
+            {
+                text: JSON.stringify({
+                    name: student.name,
+                    email: student.email,
+                    passId: student.passId,
+                    bus: student.bus,
+                    route: student.route
+                }),
+                width: 180,
+                height: 180
+            });
       }
     }
   }

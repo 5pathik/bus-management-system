@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Requests</title>
+
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
+
   <div class="dashboard">
     <aside class="sidebar">
       <div class="sidebar-brand">
@@ -20,19 +22,47 @@
 
       <ul>
         <li><a href="admin-dashboard.html">Dashboard</a></li>
-        <li><a href="requests.html" class="active-link">Requests</a></li>
+        <li><a class="active-link" href="requests.html">Requests</a></li>
       </ul>
 
       <button class="btn logout-btn" onclick="logoutUser()">Logout</button>
     </aside>
 
     <main class="dashboard-content">
-      <h1>Pending Requests</h1>
-      <div id="requestsList" class="recent-list"></div>
+      <div class="admin-topbar">
+        <div>
+          <h1>Pending Requests</h1>
+          <p>Approve student registration requests and create login access.</p>
+        </div>
+        <div class="admin-date" id="currentDate"></div>
+      </div>
+
+      <section class="panel-card">
+        <div class="section-header">
+          <h2>Student Requests</h2>
+          <span class="alert-badge" id="requestCount">0 Requests</span>
+        </div>
+
+        <div id="requestsList" class="requests-grid">
+          Loading requests...
+        </div>
+      </section>
     </main>
   </div>
 
   <script type="module" src="../js/auth.js"></script>
   <script type="module" src="requests.js"></script>
+
+  <script>
+    const currentDate = document.getElementById("currentDate");
+    if (currentDate) {
+      currentDate.textContent = new Date().toLocaleDateString(undefined, {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+  </script>
 </body>
 </html>

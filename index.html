@@ -2,930 +2,1105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BusManage | Educational Institute Bus Management System</title>
-  <meta name="description" content="A smart transport management system for educational institutes with role-based access, QR pass control, live bus tracking, ETA alerts, attendance, notifications, and analytics." />
-  <meta name="theme-color" content="#2563eb" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>BusManage | Smart Bus Management System</title>
+
+  <link rel="stylesheet" href="css/style.css"/>
 
   <style>
-    :root {
-      --bg: #f4f8fc;
-      --text: #0f172a;
-      --muted: #475569;
-      --card: rgba(255,255,255,0.82);
-      --border: rgba(148,163,184,0.28);
-      --shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
-      --primary: #2563eb;
-      --primary-2: #1d4ed8;
-      --accent: #06b6d4;
-      --accent-2: #8b5cf6;
-      --hero: linear-gradient(180deg, #eff6ff 0%, #f8fbff 55%, #ffffff 100%);
-    }
-
-    body.dark-mode {
-      --bg: #050816;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --card: rgba(15, 23, 42, 0.72);
-      --border: rgba(148,163,184,0.16);
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-      --primary: #60a5fa;
-      --primary-2: #3b82f6;
-      --accent: #22d3ee;
-      --accent-2: #a78bfa;
-      --hero: linear-gradient(180deg, #0f172a 0%, #050816 55%, #020617 100%);
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background .25s ease, color .25s ease;
-    }
-    a { text-decoration: none; color: inherit; }
-
-    .page {
-      min-height: 100vh;
-      background: var(--hero);
-    }
-
-    .container {
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--bg) 76%, transparent);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 1.2rem;
-      letter-spacing: -.02em;
-    }
-
-    .brand-logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--accent-2));
-      color: white;
-      box-shadow: var(--shadow);
-      font-size: 1.15rem;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border: 0;
-      border-radius: 12px;
-      padding: 12px 18px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-    .btn:hover { transform: translateY(-1px); }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 14px 30px rgba(37,99,235,.24);
+    :root{
+      --bg:#07101f;
+      --bg2:#0f172a;
+      --card:rgba(255,255,255,0.05);
+      --border:rgba(148,163,184,0.14);
+      --text:#e2e8f0;
+      --muted:#94a3b8;
+      --blue:#3b82f6;
+      --blue2:#2563eb;
+      --shadow:0 18px 50px rgba(0,0,0,0.35);
     }
-    .btn-primary:hover { background: var(--primary-2); }
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      backdrop-filter: blur(10px);
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      background:
+      radial-gradient(circle at top,#1e293b 0%,#0b1220 40%,#050816 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1200px,calc(100% - 32px));
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(16px);
+      background:rgba(5,8,22,0.75);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 0;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand-logo{
+      width:56px;
+      height:56px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:1.4rem;
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
+      box-shadow:var(--shadow);
+      transition:0.3s ease;
+    }
+
+    .brand:hover .brand-logo{
+      transform:rotate(-4deg) scale(1.08);
+      filter:brightness(1.1);
+    }
+
+    .brand h2{
+      font-size:1.35rem;
+    }
+
+    .brand p{
+      color:var(--muted);
+      font-size:0.9rem;
+      margin-top:3px;
+    }
+
+    .nav-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:none;
+      padding:13px 20px;
+      border-radius:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.25s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      color:white;
+      box-shadow:0 14px 30px rgba(37,99,235,0.28);
+    }
+
+    .btn-outline{
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      color:white;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      filter:brightness(1.06);
+    }
+
+    /* HERO */
+
+    .hero{
+      padding:70px 0 40px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .hero-left h1{
+      font-size:clamp(3rem,7vw,5.2rem);
+      line-height:0.95;
+      margin-bottom:20px;
+    }
+
+    .hero-left h1 span{
+      color:#60a5fa;
+    }
+
+    .hero-left p{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:1.05rem;
+      max-width:640px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .hero-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .pill{
+      padding:11px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--border);
+      color:#e2e8f0;
+      font-size:0.92rem;
+      transition:0.25s ease;
+    }
+
+    .pill:hover{
+      transform:translateY(-2px);
+      border-color:rgba(96,165,250,0.35);
+    }
+
+    .hero-right{
+      position:relative;
+    }
+
+    .hero-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:30px;
+      padding:22px;
+      backdrop-filter:blur(12px);
+      box-shadow:var(--shadow);
+      transition:0.3s ease;
+      overflow:hidden;
+    }
+
+    .hero-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(96,165,250,0.35);
     }
-
-    .toggle {
-      width: 46px;
-      height: 46px;
-      padding: 0;
-      border-radius: 999px;
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,0.08),transparent 40%);
+      opacity:0;
+      transition:0.3s ease;
+      pointer-events:none;
     }
 
-    .hero {
-      padding: 34px 0 50px;
+    .hero-card:hover::before{
+      opacity:1;
     }
 
-    .hero-card {
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-      padding: 34px;
+    .hero-image{
+      border-radius:22px;
+      overflow:hidden;
+      min-height:280px;
     }
 
-    .hero-top {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 22px;
-      align-items: center;
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.35s ease;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: rgba(37,99,235,.10);
-      color: var(--primary-2);
-      font-weight: 700;
-      font-size: .92rem;
-      margin-bottom: 16px;
+    .hero-card:hover img{
+      transform:scale(1.04);
+      filter:brightness(1.06);
     }
 
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      line-height: .98;
-      letter-spacing: -.05em;
-      max-width: 12ch;
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:14px;
     }
 
-    .hero h1 .accent {
-      color: var(--primary);
+    .mini-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      transition:0.25s ease;
     }
 
-    .hero p {
-      margin: 16px 0 0;
-      color: var(--muted);
-      line-height: 1.72;
-      font-size: 1.06rem;
-      max-width: 62ch;
+    .mini-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(96,165,250,0.35);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
+    .mini-card strong{
+      display:block;
+      margin-bottom:5px;
+      font-size:1rem;
     }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
+    .mini-card span{
+      color:var(--muted);
+      font-size:0.92rem;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,.35);
-      color: var(--text);
+    /* SECTION */
+
+    section{
+      padding:30px 0 70px;
     }
 
-    .bus-visual {
-      position: relative;
-      min-height: 410px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .section-title{
+      text-align:center;
+      font-size:clamp(2rem,4vw,3rem);
+      margin-bottom:14px;
     }
 
-    .bus-panel {
-      width: 100%;
-      max-width: 520px;
-      border-radius: 28px;
-      padding: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.55));
-      border: 1px solid var(--border);
+    .section-subtitle{
+      text-align:center;
+      color:var(--muted);
+      line-height:1.8;
+      max-width:780px;
+      margin:auto;
     }
+
+    /* FEATURES */
 
-    body.dark-mode .bus-panel {
-      background: linear-gradient(180deg, rgba(15,23,42,.72), rgba(15,23,42,.56));
+    .feature-grid{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
-    .bus-image {
-      width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      min-height: 260px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #e0f2fe, #eef2ff);
+    .feature-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:24px;
+      transition:0.3s ease;
+      backdrop-filter:blur(12px);
+      position:relative;
+      overflow:hidden;
     }
 
-    .bus-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .feature-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(96,165,250,0.35);
+      box-shadow:0 24px 70px rgba(0,0,0,0.35);
     }
 
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
+    .feature-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,0.07),transparent 45%);
+      opacity:0;
+      transition:0.3s ease;
     }
 
-    .mini-stat {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-      background: rgba(255,255,255,.45);
+    .feature-card:hover::before{
+      opacity:1;
     }
 
-    .mini-stat strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 4px;
+    .feature-icon{
+      width:60px;
+      height:60px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:1.4rem;
+      background:rgba(59,130,246,0.12);
+      margin-bottom:16px;
+      transition:0.3s ease;
     }
 
-    .section {
-      padding: 0 0 48px;
+    .feature-card:hover .feature-icon{
+      transform:scale(1.06);
     }
 
-    .section-title {
-      margin: 0 0 10px;
-      font-size: clamp(1.5rem, 3vw, 2.15rem);
-      letter-spacing: -.03em;
+    .feature-card h3{
+      margin-bottom:10px;
+      font-size:1.2rem;
     }
 
-    .section-subtitle {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 76ch;
+    .feature-card p{
+      color:var(--muted);
+      line-height:1.8;
     }
 
-    .feature-grid {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    /* ROLE SECTION */
+
+    .role-grid{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
-    .feature-card {
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      min-height: 220px;
+    .role-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:24px;
+      transition:0.3s ease;
+      overflow:hidden;
+      position:relative;
     }
 
-    .feature-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      font-size: 1.3rem;
-      background: rgba(37,99,235,.12);
-      margin-bottom: 14px;
+    .role-card:hover{
+      transform:translateY(-7px);
+      border-color:rgba(96,165,250,0.35);
     }
 
-    .feature-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
+    .role-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,0.08),transparent 45%);
+      opacity:0;
+      transition:0.3s ease;
     }
 
-    .feature-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
+    .role-card:hover::before{
+      opacity:1;
     }
 
-    .selling {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      margin-top: 18px;
+    .role-image{
+      width:100%;
+      height:220px;
+      border-radius:20px;
+      overflow:hidden;
+      margin-bottom:18px;
     }
 
-    .selling-card {
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 26px;
+    .role-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.35s ease;
     }
 
-    .selling-card ul {
-      margin: 16px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.85;
+    .role-card:hover .role-image img{
+      transform:scale(1.05);
+      filter:brightness(1.08);
     }
 
-    .roles-wrap {
-      margin-top: 18px;
+    .role-card h3{
+      margin-bottom:10px;
+      font-size:1.4rem;
     }
 
-    .roles-title {
-      text-align: center;
-      margin: 0 0 6px;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+    .role-card p{
+      color:var(--muted);
+      line-height:1.8;
     }
 
-    .roles-subtitle {
-      text-align: center;
-      color: var(--muted);
-      margin: 0 auto 22px;
-      max-width: 60ch;
-      line-height: 1.7;
+    .role-list{
+      margin-top:16px;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.9;
     }
+
+    /* METRICS */
 
-    .role-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .metrics{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
     }
 
-    .role-card {
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      overflow: hidden;
-      position: relative;
+    .metric-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      text-align:center;
+      transition:0.3s ease;
     }
 
-    .role-top {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      margin-bottom: 10px;
+    .metric-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(96,165,250,0.35);
     }
 
-    .role-avatar {
-      width: 76px;
-      height: 76px;
-      border-radius: 22px;
-      object-fit: cover;
-      background: linear-gradient(135deg, #dbeafe, #ede9fe);
-      flex: 0 0 auto;
+    .metric-card h3{
+      font-size:1.8rem;
+      margin-bottom:8px;
     }
 
-    .role-card h3 {
-      margin: 0 0 6px;
-      font-size: 1.35rem;
+    .metric-card p{
+      color:var(--muted);
     }
 
-    .role-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
+    /* FOOTER */
+
+    .site-footer{
+      margin-top:50px;
+      padding:40px 0 20px;
+      background:linear-gradient(180deg,#050816,#0f172a);
+      border-top:1px solid rgba(148,163,184,0.12);
     }
 
-    .role-list {
-      margin: 16px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.85;
+    .footer-main{
+      display:flex;
+      flex-direction:column;
+      gap:28px;
     }
 
-    .role-footer {
-      margin-top: 16px;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
+    .footer-brand-section,
+    .footer-team-section{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(148,163,184,0.12);
+      border-radius:26px;
+      padding:28px;
+      transition:0.3s ease;
     }
 
-    .role-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-      color: var(--text);
-      background: rgba(255,255,255,.25);
+    .footer-brand-section:hover,
+    .footer-team-section:hover{
+      transform:translateY(-5px);
+      border-color:rgba(96,165,250,0.35);
     }
 
-    .metrics {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
     }
 
-    .metric {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      text-align: center;
+    .footer-brand h2{
+      margin:0;
+      font-size:1.5rem;
     }
 
-    .metric strong {
-      display: block;
-      font-size: 1.3rem;
-      margin-bottom: 6px;
+    .footer-brand p{
+      margin:4px 0 0;
+      color:var(--muted);
     }
 
-    .team {
-      margin-top: 12px;
-      background: linear-gradient(180deg, rgba(2,6,23,.98), rgba(15,23,42,.98));
-      color: #e2e8f0;
-      border-top: 1px solid rgba(148,163,184,.15);
-      padding: 34px 0 20px;
+    .footer-text{
+      margin:18px 0;
+      color:#cbd5e1;
+      line-height:1.8;
+      max-width:720px;
     }
 
-    .team h2 {
-      text-align: center;
-      margin: 0 0 8px;
-      font-size: 1.5rem;
+    .team-subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:22px;
     }
 
-    .team p {
-      text-align: center;
-      margin: 0;
-      color: #94a3b8;
-      line-height: 1.7;
+    .two-team-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      max-width:720px;
+      margin:auto;
     }
 
-    .team-grid {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+    .footer-team-card{
+      text-align:center;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(148,163,184,0.14);
+      border-radius:22px;
+      padding:22px;
+      transition:0.3s ease;
     }
 
-    .team-card {
-      border: 1px solid rgba(148,163,184,.22);
-      border-radius: 22px;
-      background: rgba(255,255,255,.03);
-      padding: 18px;
-      text-align: center;
+    .footer-team-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(96,165,250,0.35);
+      box-shadow:0 24px 70px rgba(0,0,0,0.35);
     }
 
-    .team-photo {
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 12px;
-      border: 3px solid rgba(255,255,255,.12);
-      background: #1e293b;
-      display: block;
+    .team-photo{
+      width:84px;
+      height:84px;
+      border-radius:50%;
+      object-fit:cover;
+      margin:0 auto 14px;
+      border:3px solid rgba(255,255,255,0.12);
+      background:#1e293b;
+      transition:0.3s ease;
     }
 
-    .team-card h3 {
-      margin: 0 0 4px;
-      color: white;
-      font-size: 1.05rem;
+    .footer-team-card:hover .team-photo{
+      transform:scale(1.06);
+      filter:brightness(1.08);
     }
 
-    .team-card span {
-      display: block;
-      color: #94a3b8;
-      font-size: .92rem;
-      margin-bottom: 14px;
+    .footer-team-card h4{
+      margin-bottom:6px;
     }
 
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
+    .footer-team-card span{
+      color:var(--muted);
+      display:block;
+      margin-bottom:16px;
     }
 
-    .social {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(148,163,184,.25);
-      color: white;
-      background: rgba(255,255,255,.04);
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:12px;
     }
 
-    .footer-bottom {
-      margin-top: 22px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(148,163,184,.18);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      color: #94a3b8;
-      font-size: .95rem;
+    .social{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(148,163,184,0.16);
+      transition:0.25s ease;
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: white;
-      font-weight: 800;
+    .social:hover{
+      background:#2563eb;
+      transform:translateY(-3px);
     }
 
-    .footer-brand .brand-logo {
-      width: 38px;
-      height: 38px;
-      font-size: 1rem;
-      border-radius: 12px;
-      box-shadow: none;
+    .footer-bottom{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(148,163,184,0.12);
+      text-align:center;
+      color:var(--muted);
+      font-size:0.95rem;
     }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1000px){
 
-    @media (max-width: 1100px) {
-      .hero-top,
-      .selling,
-      .role-grid,
+      .hero-grid,
       .feature-grid,
-      .team-grid {
-        grid-template-columns: 1fr;
+      .role-grid,
+      .metrics{
+        grid-template-columns:1fr;
       }
 
-      .mini-stats,
-      .metrics {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .bus-visual {
-        min-height: auto;
-      }
-    }
-    .brand-text {
-        color: var(--text);
-        transition: color 0.25s ease;
-    }
-    body.dark-mode .brand-text {
-        color: #e2e8f0;
     }
 
-    @media (max-width: 650px) {
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
+    @media(max-width:768px){
+
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
       }
 
-      .nav-actions {
-        width: 100%;
+      .two-team-grid{
+        grid-template-columns:1fr;
       }
 
-      .nav-actions .btn {
-        flex: 1;
+      .mini-stats{
+        grid-template-columns:1fr;
       }
 
-      .hero-card {
-        padding: 20px;
-        border-radius: 24px;
+      .hero{
+        padding-top:40px;
       }
 
-      .hero-actions .btn {
-        width: 100%;
+      .hero-left h1{
+        font-size:3rem;
       }
 
-      .mini-stats,
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-
-      .role-top {
-        flex-direction: column;
-      }
-
-      .role-avatar {
-        width: 88px;
-        height: 88px;
-      }
-
-      .footer-bottom {
-        justify-content: center;
-        text-align: center;
-      }
-      
     }
+
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <header class="navbar">
-      <div class="container nav-inner">
-        <div class="brand">
-            <div class="brand-logo">🚌</div>
-            <div class="brand-text">BusManage</div>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="container nav-inner">
+
+      <div class="brand">
+
+        <div class="brand-logo">🚌</div>
+
+        <div>
+          <h2>BusManage</h2>
+          <p>Smart Campus Transport System</p>
         </div>
 
-        <div class="nav-actions">
-          <button class="btn btn-outline toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
-          <a class="btn btn-outline" href="login.html">Login</a>
-          <a class="btn btn-primary" href="register.html">Register</a>
-        </div>
       </div>
-    </header>
 
-    <main class="hero">
-      <div class="container hero-card">
-        <section class="hero-top">
-          <div>
-            <div class="eyebrow">Smart campus transport • real-time bus operations</div>
-            <h1><span class="accent">Educational Institute</span> Bus Management System</h1>
-            <p>
-              Manage students, conductors, buses, routes, and bus passes in one place.
-              Built for educational institutes with real-time tracking, QR verification,
-              notifications, analytics, and a mobile-friendly experience.
-            </p>
+      <div class="nav-actions">
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="login.html">Get Started</a>
-              <a class="btn btn-outline" href="register.html">Create Account</a>
-            </div>
+        <a href="login.html" class="btn btn-outline">
+          Login
+        </a>
 
-            <div class="hero-badges">
-              <span class="pill">🔐 Secure & role-based</span>
-              <span class="pill">⚡ Real-time tracking</span>
-              <span class="pill">📱 Mobile friendly</span>
-              <span class="pill">📊 Smart analytics</span>
-            </div>
-          </div>
+        <a href="register.html" class="btn btn-primary">
+          Register
+        </a>
 
-          <div class="bus-visual">
-            <div class="bus-panel">
-              <div class="bus-image">
-                <img src="assets/images/bus-hero.png" alt="Bus illustration" />
-              </div>
-
-              <div class="mini-stats">
-                <div class="mini-stat">
-                  <strong>3 Roles</strong>
-                  <span>Admin, Conductor, Student</span>
-                </div>
-                <div class="mini-stat">
-                  <strong>Live GPS</strong>
-                  <span>Conductor tracking</span>
-                </div>
-                <div class="mini-stat">
-                  <strong>QR Scan</strong>
-                  <span>Fast pass check</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
-    </main>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Why this project stands out</h2>
-        <p class="section-subtitle">
-          It is not just a form system. It is a full transport workflow with login, pass control,
-          attendance, notifications, live location, ETA, and analytics.
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-grid">
+
+      <div class="hero-left">
+
+        <h1>
+          <span>Bus</span><br/>
+          Management<br/>
+          System
+        </h1>
+
+        <p>
+          A modern educational institute transport platform with live bus
+          tracking, attendance, QR pass verification, smart analytics,
+          notifications, and role-based management.
         </p>
 
-        <div class="feature-grid" style="margin-top:20px;">
-          <article class="feature-card">
-            <div class="feature-icon">🛡️</div>
-            <h3>Admin Control</h3>
-            <p>Manage users, buses, routes, passes, reports, and notifications from one dashboard.</p>
-          </article>
+        <div class="hero-buttons">
 
-          <article class="feature-card">
-            <div class="feature-icon">🧑‍✈️</div>
-            <h3>Conductor Tools</h3>
-            <p>Verify passes, mark attendance, start/stop live tracking, and update current stop and ETA.</p>
-          </article>
+          <a href="login.html" class="btn btn-primary">
+            Get Started
+          </a>
 
-          <article class="feature-card">
-            <div class="feature-icon">🎓</div>
-            <h3>Student Access</h3>
-            <p>See pass status, bus location, arrival alerts, route stops, and notifications anytime.</p>
-          </article>
+          <a href="register.html" class="btn btn-outline">
+            Create Account
+          </a>
+
         </div>
+
+        <div class="hero-badges">
+
+          <span class="pill">Live Tracking</span>
+
+          <span class="pill">QR Verification</span>
+
+          <span class="pill">Attendance</span>
+
+          <span class="pill">Analytics</span>
+
+        </div>
+
       </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Everything your institute needs</h2>
-        <p class="section-subtitle">
-          The system brings transport operations, student communication, and bus monitoring into a single dashboard experience.
-        </p>
+      <div class="hero-right">
 
-        <div class="selling">
-          <div class="selling-card">
-            <h3 style="margin-top:0;">What this platform delivers</h3>
-            <ul>
-              <li>Centralized management for bus transport operations</li>
-              <li>Real-time conductor location and ETA updates</li>
-              <li>QR-based pass verification and attendance marking</li>
-              <li>Live notifications and bus arrival alerts for students</li>
-              <li>Reports and analytics for admin decision-making</li>
-            </ul>
+        <div class="hero-card">
+
+          <div class="hero-image">
+
+            <img
+              src="assets/images/Gemini_Generated_Image_hkfoythkfoythkfo.png"
+              alt="Bus"
+            />
+
           </div>
 
-          <div class="selling-card">
-            <h3 style="margin-top:0;">Why it looks like a product</h3>
-            <ul>
-              <li>Clean landing page with dark mode</li>
-              <li>Role-based user flow</li>
-              <li>Professional cards and visual hierarchy</li>
-              <li>Easy to explain in viva and demo</li>
-            </ul>
+          <div class="mini-stats">
+
+            <div class="mini-card">
+              <strong>3 Roles</strong>
+              <span>Admin, Student, Conductor</span>
+            </div>
+
+            <div class="mini-card">
+              <strong>Live GPS</strong>
+              <span>Bus Tracking</span>
+            </div>
+
+            <div class="mini-card">
+              <strong>QR Scan</strong>
+              <span>Fast Pass Check</span>
+            </div>
+
           </div>
+
         </div>
+
       </div>
-    </section>
 
-    <section class="section roles-wrap">
-      <div class="container">
-        <h2 class="roles-title">3 Roles, One Seamless Experience</h2>
-        <p class="roles-subtitle">Different access. One goal — smarter transport.</p>
+    </div>
 
-        <div class="role-grid">
-          <article class="role-card">
-            <div class="role-top">
-              <img class="role-avatar" src="assets/images/admin-role.png" alt="Admin role" />
-              <div>
-                <h3>Admin</h3>
-                <p>Manage users, buses, routes, passes, notifications, and generate detailed reports.</p>
-              </div>
-            </div>
-            <ul class="role-list">
-              <li>User & Data Management</li>
-              <li>Bus & Route Management</li>
-              <li>Reports & Analytics</li>
-              <li>Notifications</li>
-            </ul>
-            <div class="role-footer">
-              <a class="role-link" href="login.html">Learn More →</a>
-            </div>
-          </article>
+  </section>
 
-          <article class="role-card">
-            <div class="role-top">
-              <img class="role-avatar" src="assets/images/conductor-role.png" alt="Conductor role" />
-              <div>
-                <h3>Conductor</h3>
-                <p>Verify student passes, mark attendance, and share live bus location with ETA.</p>
-              </div>
-            </div>
-            <ul class="role-list">
-              <li>QR Pass Verification</li>
-              <li>Mark Bus Attendance</li>
-              <li>Live Location Tracking</li>
-              <li>Update Stop & ETA</li>
-            </ul>
-            <div class="role-footer">
-              <a class="role-link" href="login.html">Learn More →</a>
-            </div>
-          </article>
+  <!-- FEATURES -->
 
-          <article class="role-card">
-            <div class="role-top">
-              <img class="role-avatar" src="assets/images/student-role.png" alt="Student role" />
-              <div>
-                <h3>Student</h3>
-                <p>View pass status, track bus live, get arrival alerts, and receive important updates.</p>
-              </div>
-            </div>
-            <ul class="role-list">
-              <li>View Bus Live Location</li>
-              <li>Arrival Alerts (ETA)</li>
-              <li>Route & Stop Information</li>
-              <li>Notifications</li>
-            </ul>
-            <div class="role-footer">
-              <a class="role-link" href="login.html">Learn More →</a>
-            </div>
-          </article>
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Powerful Features
+      </h2>
+
+      <p class="section-subtitle">
+        Built to simplify educational transport management with modern tools
+        and real-time operations.
+      </p>
+
+      <div class="feature-grid">
+
+        <div class="feature-card">
+
+          <div class="feature-icon">🛡️</div>
+
+          <h3>Admin Dashboard</h3>
+
+          <p>
+            Manage students, buses, conductors, routes, reports,
+            notifications, and attendance from one smart dashboard.
+          </p>
+
         </div>
 
-        <div class="metrics">
-          <div class="metric"><strong>3+</strong> User Roles</div>
-          <div class="metric"><strong>10+</strong> Features</div>
-          <div class="metric"><strong>25+</strong> Routes & Stops</div>
-          <div class="metric"><strong>Real-time</strong> Tracking & Analytics</div>
+        <div class="feature-card">
+
+          <div class="feature-icon">🧑‍✈️</div>
+
+          <h3>Conductor Tools</h3>
+
+          <p>
+            Verify QR passes, mark attendance, and share live bus
+            location with students.
+          </p>
+
         </div>
+
+        <div class="feature-card">
+
+          <div class="feature-icon">🎓</div>
+
+          <h3>Student Access</h3>
+
+          <p>
+            View live bus location, route information,
+            ETA alerts, and transport notifications.
+          </p>
+
+        </div>
+
       </div>
-    </section>
 
-    <footer class="team">
-      <div class="container">
-        <h2>Project by Team Developers</h2>
-        <p>Add your names, GitHub, and LinkedIn links below.</p>
+    </div>
 
-        <div class="team-grid">
-          <div class="team-card">
-            <img class="team-photo" src="assets/images/team1.jpg" alt="Team member 1" />
-            <h3>Your Name 1</h3>
-            <span>Frontend Developer</span>
-            <div class="socials">
-              <a class="social" href="#" target="_blank" aria-label="GitHub">GH</a>
-              <a class="social" href="#" target="_blank" aria-label="LinkedIn">in</a>
-            </div>
+  </section>
+
+  <!-- ROLES -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Role Based Access
+      </h2>
+
+      <p class="section-subtitle">
+        Each user gets a personalized dashboard and workflow.
+      </p>
+
+      <div class="role-grid">
+
+        <!-- ADMIN -->
+
+        <div class="role-card">
+
+          <div class="role-image">
+
+            <img
+              src="assets/images/Gemini_Generated_Image_.png"
+              alt="Admin"
+            />
+
           </div>
 
-          <div class="team-card">
-            <img class="team-photo" src="assets/images/team2.jpg" alt="Team member 2" />
-            <h3>Your Name 2</h3>
-            <span>UI / UX Designer</span>
-            <div class="socials">
-              <a class="social" href="#" target="_blank" aria-label="GitHub">GH</a>
-              <a class="social" href="#" target="_blank" aria-label="LinkedIn">in</a>
-            </div>
-          </div>
+          <h3>Admin</h3>
 
-          <div class="team-card">
-            <img class="team-photo" src="assets/images/team3.jpg" alt="Team member 3" />
-            <h3>Your Name 3</h3>
-            <span>Backend / Firebase</span>
-            <div class="socials">
-              <a class="social" href="#" target="_blank" aria-label="GitHub">GH</a>
-              <a class="social" href="#" target="_blank" aria-label="LinkedIn">in</a>
-            </div>
-          </div>
+          <p>
+            Complete control over buses, students, routes,
+            conductors, notifications, and reports.
+          </p>
 
-          <div class="team-card">
-            <img class="team-photo" src="assets/images/team4.jpg" alt="Team member 4" />
-            <h3>Your Name 4</h3>
-            <span>Testing / Support</span>
-            <div class="socials">
-              <a class="social" href="#" target="_blank" aria-label="GitHub">GH</a>
-              <a class="social" href="#" target="_blank" aria-label="LinkedIn">in</a>
-            </div>
-          </div>
+          <ul class="role-list">
+            <li>Manage Buses</li>
+            <li>Manage Students</li>
+            <li>Analytics & Reports</li>
+            <li>Notification System</li>
+          </ul>
+
         </div>
 
-        <div class="footer-bottom">
+        <!-- CONDUCTOR -->
+
+        <div class="role-card">
+
+          <div class="role-image">
+
+            <img
+              src="assets/images/Gemini_Generated_Image_hkfoythkfoythkfo.png"
+              alt="Conductor"
+            />
+
+          </div>
+
+          <h3>Conductor</h3>
+
+          <p>
+            Smart tools for attendance, QR verification,
+            and live transport updates.
+          </p>
+
+          <ul class="role-list">
+            <li>QR Pass Scan</li>
+            <li>Attendance Marking</li>
+            <li>Bus Status Updates</li>
+            <li>Live Tracking</li>
+          </ul>
+
+        </div>
+
+        <!-- STUDENT -->
+
+        <div class="role-card">
+
+          <div class="role-image">
+
+            <img
+              src="assets/images/Gemini_Generated_Image_ (1).png"
+              alt="Student"
+            />
+
+          </div>
+
+          <h3>Student</h3>
+
+          <p>
+            Students can check bus status, notifications,
+            and transport information anytime.
+          </p>
+
+          <ul class="role-list">
+            <li>View Bus Location</li>
+            <li>Arrival Alerts</li>
+            <li>Route Details</li>
+            <li>Notifications</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <!-- METRICS -->
+
+      <div class="metrics">
+
+        <div class="metric-card">
+          <h3>20+</h3>
+          <p>User Roles</p>
+        </div>
+
+        <div class="metric-card">
+          <h3>10+</h3>
+          <p>Core Features</p>
+        </div>
+
+        <div class="metric-card">
+          <h3>25+</h3>
+          <p>Routes & Stops</p>
+        </div>
+
+        <div class="metric-card">
+          <h3>Live</h3>
+          <p>Tracking Support</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <div class="footer-main">
+
+        <!-- BRAND -->
+
+        <div class="footer-brand-section">
+
           <div class="footer-brand">
+
             <div class="brand-logo">🚌</div>
-            <span>BusManage</span>
+
+            <div>
+              <h2>BusManage</h2>
+              <p>Smart Campus Transport System</p>
+            </div>
+
           </div>
-          <div>© 2024 BusManage. All rights reserved.</div>
-          <div>Built for educational transport management.</div>
+
+          <p class="footer-text">
+            A modern transport management platform for educational institutes
+            with smart attendance, QR pass verification,
+            live bus tracking, notifications, and analytics.
+          </p>
+
+          <div class="hero-badges">
+
+            <span class="pill">Role-based Access</span>
+
+            <span class="pill">Live Tracking</span>
+
+            <span class="pill">QR Verification</span>
+
+          </div>
+
         </div>
+
+        <!-- TEAM -->
+
+        <div class="footer-team-section">
+
+          <h2 class="section-title" style="font-size:2rem;">
+            Project Team
+          </h2>
+
+          <p class="team-subtitle">
+            Developed as a smart educational transport platform.
+          </p>
+
+          <div class="team-grid two-team-grid">
+
+            <!-- MEMBER 1 -->
+
+            <div class="footer-team-card">
+
+              <img
+                class="team-photo"
+                src="assets/images/69d4f553a801270cc080e78402855353.jpg"
+                alt="Pathik"
+              />
+
+              <h4>Pankaj Singh Bora</h4>
+
+              <span>FullStack Developer</span>
+
+              <div class="socials">
+
+                <a
+                  class="social"
+                  href="https://github.com/5pathik"
+                  target="_blank"
+                >
+                  GH
+                </a>
+
+                <a
+                  class="social"
+                  href="https://www.linkedin.com/in/5pathik/"
+                  target="_blank"
+                >
+                  in
+                </a>
+
+              </div>
+
+            </div>
+
+            <!-- MEMBER 2 -->
+
+            <div class="footer-team-card">
+
+              <img
+                class="team-photo"
+                src="assets/images/382315cf7f7dd697146533ea538db3a8.jpg"
+                alt="Team Member 2"
+              />
+
+              <h4>Praduamn Pratap Singh Bisht</h4>
+
+              <span>FullStack Developer</span>
+
+              <div class="socials">
+
+                <a class="social" href="#">
+                  GH
+                </a>
+
+                <a class="social" href="#">
+                  in
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-    </footer>
-  </div>
 
-  <script>
-    const themeToggle = document.getElementById("themeToggle");
+      <!-- BOTTOM -->
 
-    const savedTheme = localStorage.getItem("busmanage-theme");
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark-mode");
-      themeToggle.textContent = "☀️";
-    }
+      <div class="footer-bottom">
 
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      themeToggle.textContent = isDark ? "☀️" : "🌙";
-      localStorage.setItem("busmanage-theme", isDark ? "dark" : "light");
-    });
-  </script>
-  <script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/service-worker.js");
-    });
-  }
-</script>
+        © 2024 BusManage • Educational Institute Transport System
+
+      </div>
+
+    </div>
+
+  </footer>
+
 </body>
 </html>

@@ -9,8 +9,7 @@ A modern transport management platform for schools, colleges, and universities t
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Open-success?style=for-the-badge)](https://bus-management-system-afa05.web.app)
 [![Firebase](https://img.shields.io/badge/Firebase-Backend-orange?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
-[![HTML](https://img.shields.io/badge/HTML5-Frontend-red?style=for-the-badge&logo=html5)]
-[![JavaScript](https://img.shields.io/badge/JavaScript-Dynamic-yellow?style=for-the-badge&logo=javascript)]
+
 
 </div>
 

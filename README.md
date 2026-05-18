@@ -1,18 +1,40 @@
-````md
-# 🚌 BusManage – Educational Institute Bus Management System
+<div align="center">
 
-A modern smart transport management platform built for schools, colleges, and universities to simplify and digitize transportation operations.
+# 🚌 BusManage
+### Smart Educational Institute Bus Management System
+
+A modern transport management platform for schools, colleges, and universities to simplify and digitize transportation workflows.
+
+<br>
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Open-success?style=for-the-badge)](https://bus-management-system-afa05.web.app)
+[![Firebase](https://img.shields.io/badge/Firebase-Backend-orange?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+[![HTML](https://img.shields.io/badge/HTML5-Frontend-red?style=for-the-badge&logo=html5)]
+[![JavaScript](https://img.shields.io/badge/JavaScript-Dynamic-yellow?style=for-the-badge&logo=javascript)]
+
+</div>
 
 ---
 
-# 🔗 Project Links
+# ✨ Overview
 
-- [🌐 Live Demo](https://bus-management-system-afa05.web.app)
-- [⚙️ Firebase Console (Admin Only)](https://console.firebase.google.com/project/bus-management-system-afa05/overview)
+**BusManage** is a smart transportation workflow platform designed for educational institutions.
+
+The system digitizes transport operations through role-based dashboards, attendance systems, pass verification, analytics, notifications, and scalable transport management.
 
 ---
 
-# 🌐 Project Preview
+# 🌐 Live Project
+
+🔗 **Live Demo:**  
+https://bus-management-system-afa05.web.app
+
+⚙️ **Firebase Console (Admin Only):**  
+https://console.firebase.google.com/project/bus-management-system-afa05/overview
+
+---
+
+# 📸 Project Preview
 
 ## 🏠 Landing Page
 
@@ -24,16 +46,16 @@ A modern smart transport management platform built for schools, colleges, and un
 
 ![Admin Dashboard](assets/screenshots/admin-dashboard.png)
 
-### Admin Features
-- Manage Students
-- Manage Conductors
-- Manage Buses
-- Manage Routes
-- Manage Passes
-- View Reports & Analytics
-- Send Notifications
+### 🔹 Features
+- Student Management
+- Conductor Management
+- Bus Management
+- Route Management
+- Pass Approval System
+- Reports & Analytics
+- Notification System
 - CSV Bulk Import
-- Approve Registration Requests
+- Registration Approval Workflow
 
 ---
 
@@ -41,11 +63,11 @@ A modern smart transport management platform built for schools, colleges, and un
 
 ![Conductor Dashboard](assets/screenshots/conductor-dashboard.png)
 
-### Conductor Features
-- Verify Student Passes
-- Mark Attendance
-- Update Bus Status
-- View Assigned Route
+### 🔹 Features
+- Student Pass Verification
+- Attendance Management
+- Assigned Route Details
+- Bus Status Updates
 - Simulated Live Tracking
 
 ---
@@ -54,65 +76,48 @@ A modern smart transport management platform built for schools, colleges, and un
 
 ![Student Dashboard](assets/screenshots/student-dashboard.png)
 
-### Student Features
+### 🔹 Features
 - View Pass Status
-- Check Assigned Bus & Route
-- Receive Notifications
-- View Bus Updates
-- Transport Access Management
-
----
-
-# ✨ About The Project
-
-BusManage is a centralized smart transportation workflow system developed for educational institutions.
-
-The platform combines:
-
-- Student Management
-- Bus Management
-- Route Handling
-- Attendance Tracking
-- Pass Verification
+- Bus & Route Information
 - Notifications
-- Reports & Analytics
-
-into one unified modern dashboard experience.
+- Bus Updates
+- Transport Access Details
 
 ---
 
-# 🚀 Why This Project Stands Out
+# 🚀 Key Features
 
-Unlike traditional transport systems, BusManage is designed as a complete workflow automation platform.
+<div align="center">
 
-## Key Highlights
+| Feature | Description |
+|---|---|
+| 🔐 Authentication | Secure Firebase Authentication |
+| 👥 Role-Based Access | Admin, Conductor & Student Dashboards |
+| 🚌 Transport Management | Bus, Route & Pass Management |
+| 📊 Analytics | Reports & Dashboard Statistics |
+| 📥 CSV Import | Bulk Upload Support |
+| 📱 Responsive UI | Mobile, Tablet & Desktop Support |
+| ☁️ Cloud Database | Firestore Real-Time Database |
+| 🔔 Notifications | Transport Update Alerts |
+| 📍 GPS Ready | Future GPS Integration Support |
 
-✅ Role-Based Dashboards  
-✅ Smart Transport Management  
-✅ Student Pass Verification  
-✅ Attendance Monitoring  
-✅ CSV Bulk Import Support  
-✅ Reports & Analytics  
-✅ GPS-Ready Route Structure  
-✅ Responsive Modern UI  
-✅ Firebase Cloud Integration  
-✅ Real-Time Data Handling  
+</div>
 
 ---
 
 # 🛠️ Tech Stack
 
-## Frontend
+## 🎨 Frontend
 - HTML5
 - CSS3
 - JavaScript
 
-## Backend & Database
+## ☁️ Backend & Database
 - Firebase Authentication
 - Cloud Firestore
 - Firebase Hosting
 
-## Libraries & Tools
+## 📚 Libraries & Tools
 - Chart.js
 - PapaParse
 - Service Worker
@@ -121,15 +126,21 @@ Unlike traditional transport systems, BusManage is designed as a complete workfl
 
 # 🔐 Authentication Workflow
 
-## Student Registration Flow
-
-1. Student submits registration request
-2. Admin reviews the request
-3. Admin approves the account
-4. Firebase Authentication account is created
-5. Temporary password is generated
-6. Student logs in
-7. Student resets or changes password
+```text
+Student Registration
+        ↓
+Admin Reviews Request
+        ↓
+Admin Approves Account
+        ↓
+Firebase Account Created
+        ↓
+Temporary Password Generated
+        ↓
+Student Login
+        ↓
+Password Reset / Change
+````
 
 ---
 
@@ -137,12 +148,12 @@ Unlike traditional transport systems, BusManage is designed as a complete workfl
 
 The analytics module provides:
 
-- Total Students
-- Total Buses
-- Attendance Records
-- Active vs Expired Passes
-- Route Usage Statistics
-- Bus Activity Overview
+* Total Students
+* Total Buses
+* Attendance Records
+* Active & Expired Pass Reports
+* Route Usage Statistics
+* Bus Activity Overview
 
 ---
 
@@ -150,12 +161,10 @@ The analytics module provides:
 
 Administrators can bulk import:
 
-- Students
-- Conductors
-- Buses
-- Routes
-
-using CSV files.
+✅ Students
+✅ Conductors
+✅ Buses
+✅ Routes
 
 This reduces manual data entry and improves scalability.
 
@@ -163,29 +172,31 @@ This reduces manual data entry and improves scalability.
 
 # 🌍 Smart Transport Features
 
-## Current Features
-- Route Mapping Support
-- GPS-Ready Route Structure
-- Attendance Management
-- Pass Validity Tracking
-- Notification System
+## ✅ Current Features
 
-## Future Scope
-- Real-Time GPS Tracking
-- ETA Prediction
-- QR Code Scanning
-- AI Route Optimization
-- Mobile App Integration
+* Route Mapping Structure
+* Attendance Tracking
+* Pass Validation
+* Notifications System
+* Responsive Dashboard
+
+## 🔮 Future Scope
+
+* Real-Time GPS Tracking
+* ETA Prediction
+* QR Code Scanner
+* AI Route Optimization
+* Mobile App Integration
 
 ---
 
 # 📱 Responsive Design
 
-BusManage is fully responsive and optimized for:
+BusManage is fully optimized for:
 
-✅ Desktop  
-✅ Tablet  
-✅ Mobile Devices  
+* 💻 Desktop
+* 📱 Mobile Devices
+* 📲 Tablets
 
 ---
 
@@ -213,37 +224,43 @@ bus-management-system/
 ├── manifest.json
 ├── service-worker.js
 └── README.md
-````
+```
 
 ---
 
 # ⚙️ Installation & Setup
 
-## Clone Repository
+## 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/5pathik/bus-management-system.git
 ```
 
-## Open Project Folder
+## 2️⃣ Open Project Folder
 
 ```bash
 cd bus-management-system
 ```
 
-## Run Locally
+## 3️⃣ Run Project
 
-You can directly open:
+Open:
 
 ```bash
 index.html
 ```
 
-or use VS Code Live Server.
+or use **VS Code Live Server**.
 
 ---
 
-# 🔥 Firebase Configuration
+# 🔥 Firebase Setup
+
+Add your Firebase configuration inside:
+
+```bash
+js/firebase-config.js
+```
 
 This project uses:
 
@@ -251,31 +268,24 @@ This project uses:
 * Cloud Firestore
 * Firebase Hosting
 
-Make sure your Firebase configuration is properly added inside:
-
-```bash
-js/firebase-config.js
-```
-
 ---
 
 # 📌 Future Improvements
 
-* AI-based Route Optimization
+* AI Route Optimization
 * QR Attendance Scanner
 * GPS Bus Tracking
-* Mobile Application
 * Push Notifications
 * Driver Management System
-* Fee Payment Integration
+* Online Fee Integration
 
 ---
 
 # 👨‍💻 Developer
 
-Developed by Pankaj Singh Bora
+## Pankaj Singh Bora
 
-GitHub:
+🔗 GitHub:
 https://github.com/5pathik
 
 ---
@@ -284,5 +294,10 @@ https://github.com/5pathik
 
 This project is developed for educational and portfolio purposes.
 
-```
-```
+---
+
+<div align="center">
+
+### ⭐ If you like this project, consider giving it a star on GitHub ⭐
+
+</div>

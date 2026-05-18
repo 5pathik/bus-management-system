@@ -1,22 +1,26 @@
+````md
 # 🚌 BusManage – Educational Institute Bus Management System
 
 A modern smart transport management platform built for schools, colleges, and universities to simplify and digitize transportation operations.
 
 ---
 
+# 🔗 Project Links
+
+- [🌐 Live Demo](https://bus-management-system-afa05.web.app)
+- [⚙️ Firebase Console (Admin Only)](https://console.firebase.google.com/project/bus-management-system-afa05/overview)
+
+---
+
 # 🌐 Project Preview
 
-## Landing Page
-
-> Add your landing page screenshot here
+## 🏠 Landing Page
 
 ![Landing Page](assets/screenshots/landing-page.png)
 
 ---
 
 ## 👨‍💼 Admin Dashboard
-
-> Add admin dashboard screenshot here
 
 ![Admin Dashboard](assets/screenshots/admin-dashboard.png)
 
@@ -35,8 +39,6 @@ A modern smart transport management platform built for schools, colleges, and un
 
 ## 🧑‍✈️ Conductor Dashboard
 
-> Add conductor dashboard screenshot here
-
 ![Conductor Dashboard](assets/screenshots/conductor-dashboard.png)
 
 ### Conductor Features
@@ -49,8 +51,6 @@ A modern smart transport management platform built for schools, colleges, and un
 ---
 
 ## 🎓 Student Dashboard
-
-> Add student dashboard screenshot here
 
 ![Student Dashboard](assets/screenshots/student-dashboard.png)
 
@@ -65,36 +65,38 @@ A modern smart transport management platform built for schools, colleges, and un
 
 # ✨ About The Project
 
-BusManage is designed to provide a centralized transport workflow for educational institutes.
+BusManage is a centralized smart transportation workflow system developed for educational institutions.
 
 The platform combines:
 
-- Student management
-- Bus management
-- Route handling
-- Attendance tracking
-- Pass verification
+- Student Management
+- Bus Management
+- Route Handling
+- Attendance Tracking
+- Pass Verification
 - Notifications
-- Reports & analytics
+- Reports & Analytics
 
-into one unified dashboard experience.
+into one unified modern dashboard experience.
 
 ---
 
 # 🚀 Why This Project Stands Out
 
-Unlike traditional transport systems, BusManage is not just a form management app.
+Unlike traditional transport systems, BusManage is designed as a complete workflow automation platform.
 
-It is designed as a complete workflow system with:
+## Key Highlights
 
-✅ Role-based dashboards  
-✅ Smart transport management  
-✅ Pass verification system  
-✅ Attendance monitoring  
-✅ CSV bulk import support  
-✅ Analytics & reports  
-✅ GPS-ready route structure  
-✅ Responsive modern UI  
+✅ Role-Based Dashboards  
+✅ Smart Transport Management  
+✅ Student Pass Verification  
+✅ Attendance Monitoring  
+✅ CSV Bulk Import Support  
+✅ Reports & Analytics  
+✅ GPS-Ready Route Structure  
+✅ Responsive Modern UI  
+✅ Firebase Cloud Integration  
+✅ Real-Time Data Handling  
 
 ---
 
@@ -122,31 +124,31 @@ It is designed as a complete workflow system with:
 ## Student Registration Flow
 
 1. Student submits registration request
-2. Admin reviews request
-3. Admin approves account
+2. Admin reviews the request
+3. Admin approves the account
 4. Firebase Authentication account is created
 5. Temporary password is generated
 6. Student logs in
-7. Student can reset/change password
+7. Student resets or changes password
 
 ---
 
 # 📊 Reports & Analytics
 
-The reports module provides:
+The analytics module provides:
 
-- Total students
-- Total buses
-- Attendance records
-- Active vs expired passes
-- Route usage statistics
-- Bus activity overview
+- Total Students
+- Total Buses
+- Attendance Records
+- Active vs Expired Passes
+- Route Usage Statistics
+- Bus Activity Overview
 
 ---
 
 # 📥 CSV Import System
 
-Admin can bulk import:
+Administrators can bulk import:
 
 - Students
 - Conductors
@@ -162,18 +164,18 @@ This reduces manual data entry and improves scalability.
 # 🌍 Smart Transport Features
 
 ## Current Features
-- Route mapping support
-- GPS-ready route structure
-- Attendance management
-- Pass validity tracking
-- Notifications system
+- Route Mapping Support
+- GPS-Ready Route Structure
+- Attendance Management
+- Pass Validity Tracking
+- Notification System
 
 ## Future Scope
-- Real-time GPS tracking
-- ETA prediction
-- QR code scanning
-- AI route optimization
-- Mobile app integration
+- Real-Time GPS Tracking
+- ETA Prediction
+- QR Code Scanning
+- AI Route Optimization
+- Mobile App Integration
 
 ---
 
@@ -198,11 +200,89 @@ bus-management-system/
 ├── css/
 ├── js/
 ├── assets/
+│   └── screenshots/
+│
+├── database/
+├── functions/
 │
 ├── index.html
 ├── login.html
 ├── register.html
 ├── forgot-password.html
 ├── firebase.json
+├── manifest.json
 ├── service-worker.js
 └── README.md
+````
+
+---
+
+# ⚙️ Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/5pathik/bus-management-system.git
+```
+
+## Open Project Folder
+
+```bash
+cd bus-management-system
+```
+
+## Run Locally
+
+You can directly open:
+
+```bash
+index.html
+```
+
+or use VS Code Live Server.
+
+---
+
+# 🔥 Firebase Configuration
+
+This project uses:
+
+* Firebase Authentication
+* Cloud Firestore
+* Firebase Hosting
+
+Make sure your Firebase configuration is properly added inside:
+
+```bash
+js/firebase-config.js
+```
+
+---
+
+# 📌 Future Improvements
+
+* AI-based Route Optimization
+* QR Attendance Scanner
+* GPS Bus Tracking
+* Mobile Application
+* Push Notifications
+* Driver Management System
+* Fee Payment Integration
+
+---
+
+# 👨‍💻 Developer
+
+Developed by Pankaj Singh Bora
+
+GitHub:
+https://github.com/5pathik
+
+---
+
+# 📄 License
+
+This project is developed for educational and portfolio purposes.
+
+```
+```
